@@ -1,0 +1,10 @@
+@tailwind base;
+
+@tailwind components;
+
+html {
+  @apply antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+@tailwind utilities;

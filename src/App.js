@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Dashboard from './pages/Dashboard';
+import Auth from './pages/Auth';
 
-const App = () => <Dashboard />;
+const App = () => <Auth />;
 
 export default App;

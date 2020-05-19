@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { observer, inject } from 'mobx-react';
 
 import gql from 'graphql-tag';
@@ -31,7 +32,7 @@ const AuthPage = ({ store }) => {
     if (token) {
       onAuth(token);
     }
-  }, []);
+  }, [onAuth]);
 
   const onSignInError = (error) => {
     console.log(error);
@@ -66,6 +67,14 @@ const AuthPage = ({ store }) => {
       {error && <div>{error.graphQLErrors[0].message}</div>}
     </div>
   );
+};
+
+AuthPage.propTypes = {
+  store: PropTypes.shape({
+    user: PropTypes.shape({
+      onAuth: PropTypes.func,
+    }),
+  }).isRequired,
 };
 
 export default inject('store')(observer(AuthPage));

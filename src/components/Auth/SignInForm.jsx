@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
 const SignInForm = ({ switchToSignUp, signIn }) => {
   const [email, setEmail] = useState('');
@@ -76,6 +77,11 @@ const SignInForm = ({ switchToSignUp, signIn }) => {
       </div>
     </div>
   );
+};
+
+SignInForm.propTypes = {
+  switchToSignUp: PropTypes.func.isRequired,
+  signIn: PropTypes.func.isRequired,
 };
 
 export default SignInForm;

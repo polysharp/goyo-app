@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
-const SignInForm = ({ switchToSignIn, signUp }) => {
+const SignUpForm = ({ switchToSignIn, signUp }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -78,4 +79,9 @@ const SignInForm = ({ switchToSignIn, signUp }) => {
   );
 };
 
-export default SignInForm;
+SignUpForm.propTypes = {
+  switchToSignIn: PropTypes.func.isRequired,
+  signUp: PropTypes.func.isRequired,
+};
+
+export default SignUpForm;

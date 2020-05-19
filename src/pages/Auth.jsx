@@ -1,38 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { observer, inject } from 'mobx-react';
 
-import gql from 'graphql-tag';
 import { useMutation } from '@apollo/react-hooks';
 
+import { USER } from '../graphql';
 import { SignInForm, SignUpForm } from '../components';
-
-const SIGN_IN_QUERY = gql`
-  mutation SignIn($email: String!, $password: String!) {
-    signIn(user: { email: $email, password: $password }) {
-      token
-    }
-  }
-`;
-
-const SIGN_UP_QUERY = gql`
-  mutation SignUp($email: String!, $password: String!) {
-    signUp(user: { email: $email, password: $password }) {
-      token
-    }
-  }
-`;
 
 const AuthPage = ({ store }) => {
   const { onAuth } = store.user;
   const [authType, setAuthType] = useState('signIn');
-
-  useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (token) {
-      onAuth(token);
-    }
-  }, [onAuth]);
 
   const onSignInError = (error) => {
     console.log(error);
@@ -45,10 +22,13 @@ const AuthPage = ({ store }) => {
     onAuth(token);
   };
 
-  const [auth, { error }] = useMutation(authType === 'signIn' ? SIGN_IN_QUERY : SIGN_UP_QUERY, {
-    onCompleted: onSignInCompleted,
-    onError: onSignInError,
-  });
+  const [auth, { error }] = useMutation(
+    authType === 'signIn' ? USER.SIGN_IN_QUERY : USER.SIGN_UP_QUERY,
+    {
+      onCompleted: onSignInCompleted,
+      onError: onSignInError,
+    }
+  );
 
   return (
     <div>

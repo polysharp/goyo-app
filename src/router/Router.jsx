@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { observer, inject } from 'mobx-react';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
@@ -7,7 +7,14 @@ import Auth from '../pages/Auth';
 import Dashboard from '../pages/Dashboard';
 
 const Router = ({ store }) => {
-  const { isAuthenticated } = store.user;
+  const { isAuthenticated, onAuth } = store.user;
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      onAuth(token);
+    }
+  }, [onAuth]);
 
   return (
     <BrowserRouter>
@@ -26,7 +33,8 @@ const Router = ({ store }) => {
 Router.propTypes = {
   store: PropTypes.shape({
     user: PropTypes.shape({
-      isAuthenticated: PropTypes.func,
+      isAuthenticated: PropTypes.bool,
+      onAuth: PropTypes.func,
     }),
   }).isRequired,
 };

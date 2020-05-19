@@ -2,24 +2,16 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { observer, inject } from 'mobx-react';
 
-import gql from 'graphql-tag';
 import { useQuery } from '@apollo/react-hooks';
 import { withApollo } from '@apollo/react-hoc';
 
+import { USER } from '../graphql';
 import { Layout, Menu, Board } from '../components';
-
-const ME_QUERY = gql`
-  query Me {
-    me {
-      email
-    }
-  }
-`;
 
 const DashboardPage = ({ store, client: apolloClient }) => {
   const { signOut, populateUser } = store.user;
 
-  const { loading, error } = useQuery(ME_QUERY, {
+  const { loading, error } = useQuery(USER.ME_QUERY, {
     onCompleted: (data) => {
       populateUser(data);
     },

@@ -15,7 +15,7 @@ import './locales/i18n';
 import theme from './theme';
 import './styles/tailwind.generated.css';
 
-import App from './App';
+import Router from './router/Router';
 
 onPatch(store, (patch) => {
   // eslint-disable-next-line no-console
@@ -28,7 +28,7 @@ ReactDOM.render(
     <ApolloProvider client={apolloClient}>
       <Provider store={store}>
         <ThemeProvider theme={theme}>
-          <App />
+          <Router />
         </ThemeProvider>
       </Provider>
     </ApolloProvider>

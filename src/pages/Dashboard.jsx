@@ -5,6 +5,8 @@ import gql from 'graphql-tag';
 import { useQuery } from '@apollo/react-hooks';
 import { withApollo } from '@apollo/react-hoc';
 
+import { Layout, Menu, Board } from '../components';
+
 const ME_QUERY = gql`
   query Me {
     me {
@@ -27,19 +29,16 @@ const Dashboard = ({ store, client: apolloClient }) => {
   };
 
   return (
-    <main className="min-w-full min-h-screen bg-teal-900">
-      <div className="fixed inset-y-0 left-0 w-16" />
-      <div
-        className="relative min-h-screen bg-white rounded-tl-lg rounded-bl-lg shadow-lg"
-        style={{ width: 'calc(100% - 70px)', marginLeft: '70px' }}
-      >
+    <Layout>
+      <Menu />
+      <Board>
         {loading && <span>LOADING</span>}
         {error && <span>{JSON.stringify(error, null, 2)}</span>}
         <button type="button" onClick={() => handleLogout()}>
           LOG OUT
         </button>
-      </div>
-    </main>
+      </Board>
+    </Layout>
   );
 };
 

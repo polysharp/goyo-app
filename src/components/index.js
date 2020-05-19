@@ -1,4 +1,8 @@
-import SignInForm from './SignInForm';
-import SignUpForm from './SignUpForm';
+import SignInForm from './Auth/SignInForm';
+import SignUpForm from './Auth/SignUpForm';
 
-export { SignInForm, SignUpForm };
+import Layout from './Layout';
+import Menu from './Menu';
+import Board from './Board';
+
+export { SignInForm, SignUpForm, Layout, Menu, Board };

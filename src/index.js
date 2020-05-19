@@ -10,7 +10,7 @@ import { ApolloProvider } from '@apollo/react-hooks';
 import { ThemeProvider } from 'styled-components';
 
 import store from './store';
-import apolloClient from './ApolloClient';
+import { apolloClient } from './graphql';
 import './locales/i18n';
 import theme from './theme';
 import './styles/tailwind.generated.css';

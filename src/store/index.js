@@ -1,10 +1,10 @@
 import { types } from 'mobx-state-tree';
-import Todo from './models';
+import User from './models';
 
 const RootStore = types.model({
-  todos: types.optional(types.array(Todo), []),
+  user: User,
 });
 
-const store = RootStore.create({ todos: [] });
+const store = RootStore.create({ user: {} });
 
 export default store;

@@ -1,17 +1,30 @@
 import React from 'react';
+import { observer, inject } from 'mobx-react';
+
 import gql from 'graphql-tag';
 import { useQuery } from '@apollo/react-hooks';
+import { withApollo } from '@apollo/react-hoc';
 
 const ME_QUERY = gql`
-  query {
+  query Me {
     me {
       email
     }
   }
 `;
 
-const Dashboard = () => {
-  const { loading, error, data } = useQuery(ME_QUERY);
+const Dashboard = ({ store, client: apolloClient }) => {
+  const { signOut, populateUser } = store.user;
+
+  const { loading, error } = useQuery(ME_QUERY, {
+    onCompleted: (data) => {
+      populateUser(data);
+    },
+  });
+
+  const handleLogout = () => {
+    apolloClient.cache.reset().then(() => signOut());
+  };
 
   return (
     <main className="min-w-full min-h-screen bg-teal-900">
@@ -20,12 +33,14 @@ const Dashboard = () => {
         className="relative min-h-screen bg-white rounded-tl-lg rounded-bl-lg shadow-lg"
         style={{ width: 'calc(100% - 70px)', marginLeft: '70px' }}
       >
-        {data && <span>{JSON.stringify(data, null, 2)}</span>}
         {loading && <span>LOADING</span>}
         {error && <span>{JSON.stringify(error, null, 2)}</span>}
+        <button type="button" onClick={() => handleLogout()}>
+          LOG OUT
+        </button>
       </div>
     </main>
   );
 };
 
-export default Dashboard;
+export default withApollo(inject('store')(observer(Dashboard)));

@@ -1,33 +1,37 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { observer, inject } from 'mobx-react';
+
 import gql from 'graphql-tag';
 import { useMutation } from '@apollo/react-hooks';
 
 import { SignInForm, SignUpForm } from '../components';
 
 const SIGN_IN_QUERY = gql`
-  mutation($email: String!, $password: String!) {
+  mutation SignIn($email: String!, $password: String!) {
     signIn(user: { email: $email, password: $password }) {
-      user {
-        email
-      }
       token
     }
   }
 `;
 
 const SIGN_UP_QUERY = gql`
-  mutation($email: String!, $password: String!) {
+  mutation SignUp($email: String!, $password: String!) {
     signUp(user: { email: $email, password: $password }) {
-      user {
-        email
-      }
       token
     }
   }
 `;
 
-const AuthPage = () => {
+const AuthPage = ({ store }) => {
+  const { onAuth } = store.user;
   const [authType, setAuthType] = useState('signIn');
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      onAuth(token);
+    }
+  }, []);
 
   const onSignInError = (error) => {
     console.log(error);
@@ -35,10 +39,9 @@ const AuthPage = () => {
   };
 
   const onSignInCompleted = (data) => {
-    if (authType === 'signIn') localStorage.setItem('token', data.signIn.token);
-    else localStorage.setItem('token', data.signUp.token);
-
-    // TODO: navigate to dashboard
+    const { token } = authType === 'signIn' ? data.signIn : data.signUp;
+    localStorage.setItem('token', token);
+    onAuth(token);
   };
 
   const [auth, { error }] = useMutation(authType === 'signIn' ? SIGN_IN_QUERY : SIGN_UP_QUERY, {
@@ -65,4 +68,4 @@ const AuthPage = () => {
   );
 };
 
-export default AuthPage;
+export default inject('store')(observer(AuthPage));

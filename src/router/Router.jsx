@@ -1,22 +1,25 @@
 import React from 'react';
+import { observer, inject } from 'mobx-react';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 
 import Auth from '../pages/Auth';
 import Dashboard from '../pages/Dashboard';
 
-const isAuth = false;
+const Router = ({ store }) => {
+  const { isAuthenticated } = store.user;
 
-const Router = () => (
-  <BrowserRouter>
-    <Switch>
-      {!isAuth && <Route path="/auth" component={Auth} />}
-      {isAuth && <Route exact path="/" component={Dashboard} />}
-      <Route path="*">
-        {isAuth && <Redirect to="/" />}
-        {!isAuth && <Redirect to="/auth" />}
-      </Route>
-    </Switch>
-  </BrowserRouter>
-);
+  return (
+    <BrowserRouter>
+      <Switch>
+        {!isAuthenticated && <Route path="/auth" component={Auth} />}
+        {isAuthenticated && <Route exact path="/" component={Dashboard} />}
+        <Route path="*">
+          {isAuthenticated && <Redirect to="/" />}
+          {!isAuthenticated && <Redirect to="/auth" />}
+        </Route>
+      </Switch>
+    </BrowserRouter>
+  );
+};
 
-export default Router;
+export default inject('store')(observer(Router));

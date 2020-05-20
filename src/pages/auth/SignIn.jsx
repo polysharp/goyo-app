@@ -1,9 +1,11 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { useMutation } from '@apollo/react-hooks';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 
 import { useStore } from '../../store';
+import { USER } from '../../graphql';
 
 const SignInSchema = Yup.object().shape({
   email: Yup.string()
@@ -13,25 +15,33 @@ const SignInSchema = Yup.object().shape({
     .max(200, 'Please provide a valid email')
     .required('Required'),
   password: Yup.string()
-    .min(8, '8 to 25 characters for password')
-    .max(25, '8 to 25 characters for password')
+    .matches(
+      /^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{8,255})/,
+      { excludeEmptyString: true, message: 'Inccorect password format' }
+    )
     .required('Required'),
 });
 
 const SignInPage = () => {
   const store = useStore();
 
+  const handleSignUpSuccess = (data) => store.user.onAuth(data.signIn);
+  const handleSignUpError = (error) => console.log(error);
+
+  const [auth, { loading }] = useMutation(USER.SIGN_IN_MUTATION, {
+    onCompleted: handleSignUpSuccess,
+    onError: handleSignUpError,
+  });
+
   return (
     <Formik
       initialValues={{ email: '', password: '' }}
       validationSchema={SignInSchema}
       onSubmit={(values, { setSubmitting }) => {
-        console.log(values);
+        const { email, password, firstName, lastName, language, currency } = values;
         setSubmitting(true);
-
-        // TODO: GRAPHQL MUTATION QUERY
-
-        setTimeout(() => setSubmitting(false), 5000);
+        auth({ variables: { email, password, firstName, lastName, language, currency } });
+        setSubmitting(false);
       }}
     >
       {({
@@ -88,7 +98,7 @@ const SignInPage = () => {
                         : 'bg-indigo-600 hover:bg-indigo-500 focus:border-indigo-700'
                     }`}
                     type="submit"
-                    disabled={!(isValid && dirty) || isSubmitting}
+                    disabled={!(isValid && dirty) || isSubmitting || loading}
                   >
                     Sign in
                   </button>

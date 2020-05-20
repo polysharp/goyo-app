@@ -10,6 +10,7 @@ const User = types
   .views(() => ({}))
   .actions((self) => ({
     onAuth(token) {
+      localStorage.setItem('token', token);
       self.bearer = token;
       self.isAuthenticated = true;
     },

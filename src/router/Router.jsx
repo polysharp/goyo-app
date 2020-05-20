@@ -3,9 +3,6 @@ import PropTypes from 'prop-types';
 import { observer, inject } from 'mobx-react';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 
-import Auth from '../pages/Auth';
-import Dashboard from '../pages/Dashboard';
-
 const Router = ({ store }) => {
   const { isAuthenticated, onAuth } = store.user;
 
@@ -18,14 +15,7 @@ const Router = ({ store }) => {
 
   return (
     <BrowserRouter>
-      <Switch>
-        {!isAuthenticated && <Route path="/auth" component={Auth} />}
-        {isAuthenticated && <Route exact path="/" component={Dashboard} />}
-        <Route path="*">
-          {isAuthenticated && <Redirect to="/" />}
-          {!isAuthenticated && <Redirect to="/auth" />}
-        </Route>
-      </Switch>
+      <div>hello</div>
     </BrowserRouter>
   );
 };

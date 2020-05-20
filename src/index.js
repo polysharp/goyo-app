@@ -2,26 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import { Provider } from 'mobx-react';
-import { onPatch } from 'mobx-state-tree';
-import makeInspectable from 'mobx-devtools-mst';
-
 import { ApolloProvider } from '@apollo/react-hooks';
-
 import { ThemeProvider } from 'styled-components';
 
 import store from './store';
 import { apolloClient } from './graphql';
-import './locales/i18n';
 import theme from './theme';
+
+import './locales/i18n';
 import './styles/tailwind.generated.css';
 
 import Router from './router/Router';
-
-onPatch(store, (patch) => {
-  // eslint-disable-next-line no-console
-  console.log(patch);
-});
-makeInspectable(store);
 
 ReactDOM.render(
   <React.StrictMode>

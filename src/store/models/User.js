@@ -14,13 +14,13 @@ const User = types
       self.bearer = token;
       self.isAuthenticated = true;
     },
-    signOut() {
+    onLogout() {
       localStorage.removeItem('token');
       self.bearer = '';
       self.email = '';
       self.isAuthenticated = false;
     },
-    populateUser(data) {
+    populate(data) {
       self.email = data.me.email;
     },
   }));

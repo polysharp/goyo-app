@@ -1,14 +1,16 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { observer } from 'mobx-react';
 
 import { useStore } from '../store';
 
-import AuthRouter from './AuthRouter';
-import AppRouter from './AppRouter';
+const AuthRouter = React.lazy(() => import('./AuthRouter'));
+const AppRouter = React.lazy(() => import('./AppRouter'));
 
 const Router = () => {
+  const [init, setInit] = useState(false);
+
   const {
-    user: { isAuthenticated, onAuth },
+    user: { isAuthenticated, onAuth, onLogout },
   } = useStore();
 
   useEffect(() => {
@@ -16,7 +18,11 @@ const Router = () => {
       const token = localStorage.getItem('token');
       if (token) {
         onAuth(token);
+      } else {
+        onLogout();
       }
+
+      setInit(true);
     };
 
     window.addEventListener('focus', onFocus);
@@ -28,7 +34,16 @@ const Router = () => {
     };
   }, []);
 
-  return isAuthenticated ? <AppRouter /> : <AuthRouter />;
+  if (!init) return null;
+  return isAuthenticated ? (
+    <React.Suspense fallback={<h1>Loading App router</h1>}>
+      <AppRouter />
+    </React.Suspense>
+  ) : (
+    <React.Suspense fallback={<h1>Loading Auth router</h1>}>
+      <AuthRouter />
+    </React.Suspense>
+  );
 };
 
 export default observer(Router);

@@ -1,52 +1,29 @@
-import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
-import { observer, inject } from 'mobx-react';
+import React from 'react';
+import { observer } from 'mobx-react';
 
 import { useQuery } from '@apollo/react-hooks';
-import { withApollo } from '@apollo/react-hoc';
 
 import { USER } from '../graphql';
+import { useStore } from '../store';
 import { Layout, Menu, Board } from '../components';
 
-const DashboardPage = ({ store, client: apolloClient }) => {
-  const { signOut, populateUser } = store.user;
+const DashboardPage = () => {
+  const store = useStore();
 
   const { loading, error } = useQuery(USER.ME_QUERY, {
-    onCompleted: (data) => {
-      populateUser(data);
-    },
+    onCompleted: (data) => store.user.populate(data),
   });
-
-  useEffect(() => {
-    return () => {
-      apolloClient.cache.reset();
-    };
-  }, []);
 
   return (
     <Layout>
       <Menu />
       <Board>
         {loading && <span>LOADING</span>}
+        {store.user.email && <h1>{store.user.email}</h1>}
         {error && <span>{JSON.stringify(error, null, 2)}</span>}
-        <button type="button" onClick={() => signOut()}>
-          LOG OUT
-        </button>
       </Board>
     </Layout>
   );
 };
 
-DashboardPage.propTypes = {
-  store: PropTypes.shape({
-    user: PropTypes.shape({
-      signOut: PropTypes.func,
-      populateUser: PropTypes.func,
-    }),
-  }).isRequired,
-  client: PropTypes.shape({
-    cache: PropTypes.object,
-  }).isRequired,
-};
-
-export default withApollo(inject('store')(observer(DashboardPage)));
+export default observer(DashboardPage);

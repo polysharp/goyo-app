@@ -15,10 +15,9 @@ const SignInSchema = Yup.object().shape({
     .max(200, 'Please provide a valid email')
     .required('Required'),
   password: Yup.string()
-    .matches(
-      /^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{8,255})/,
-      { excludeEmptyString: true, message: 'Inccorect password format' }
-    )
+    .min(8, 'Minimum of 8 characters')
+    .max(255, 'Maximum of 255 characters')
+    .matches(/\S+/, { excludeEmptyString: true, message: 'Inccorect password format' })
     .required('Required'),
 });
 

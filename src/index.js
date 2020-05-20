@@ -1,11 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { Provider } from 'mobx-react';
 import { ApolloProvider } from '@apollo/react-hooks';
 import { ThemeProvider } from 'styled-components';
 
-import store from './store';
+import { StoreProvider } from './store';
 import { apolloClient } from './graphql';
 import theme from './theme';
 
@@ -17,11 +16,11 @@ import Router from './router/Router';
 ReactDOM.render(
   <React.StrictMode>
     <ApolloProvider client={apolloClient}>
-      <Provider store={store}>
+      <StoreProvider>
         <ThemeProvider theme={theme}>
           <Router />
         </ThemeProvider>
-      </Provider>
+      </StoreProvider>
     </ApolloProvider>
   </React.StrictMode>,
   document.getElementById('root')

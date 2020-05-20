@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { useMutation } from '@apollo/react-hooks';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
+import ReCAPTCHA from 'react-google-recaptcha';
 
 import { useStore } from '../../store';
 import { USER } from '../../graphql';
@@ -23,13 +24,11 @@ const SignInSchema = Yup.object().shape({
 
 const SignInPage = () => {
   const store = useStore();
-
-  const handleSignUpSuccess = (data) => store.user.onAuth(data.signIn);
-  const handleSignUpError = (error) => console.log(error);
+  const recaptchaRef = React.createRef();
 
   const [auth, { loading }] = useMutation(USER.SIGN_IN_MUTATION, {
-    onCompleted: handleSignUpSuccess,
-    onError: handleSignUpError,
+    onCompleted: (data) => store.user.onAuth(data.signIn),
+    onError: (error) => console.log(error),
   });
 
   return (
@@ -37,6 +36,7 @@ const SignInPage = () => {
       initialValues={{ email: '', password: '' }}
       validationSchema={SignInSchema}
       onSubmit={(values, { setSubmitting }) => {
+        recaptchaRef.current.execute();
         const { email, password, firstName, lastName, language, currency } = values;
         setSubmitting(true);
         auth({ variables: { email, password, firstName, lastName, language, currency } });
@@ -55,6 +55,12 @@ const SignInPage = () => {
         dirty,
       }) => (
         <form onSubmit={handleSubmit}>
+          <ReCAPTCHA
+            ref={recaptchaRef}
+            size="invisible"
+            sitekey="6LehKfoUAAAAAPL1UHtd9gxRbbQPG0TAqi5tM57-"
+            onChange={(token) => console.log(token)}
+          />
           <div className="flex items-center justify-center min-h-screen px-4 py-12 bg-white sm:px-6 lg:px-8">
             <div className="w-full max-w-md">
               <h2 className="mt-6 text-3xl font-extrabold leading-9 text-center text-gray-900">

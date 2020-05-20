@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { useMutation } from '@apollo/react-hooks';
 import { Formik, Field } from 'formik';
 import * as Yup from 'yup';
+import ReCAPTCHA from 'react-google-recaptcha';
 
 import { useStore } from '../../store';
 import { USER } from '../../graphql';
@@ -34,14 +35,12 @@ const SignUpSchema = Yup.object().shape({
 
 const SignUpPage = () => {
   const store = useStore();
+  const recaptchaRef = React.createRef();
   const { i18n } = useTranslation();
 
-  const handleSignUpSuccess = (data) => store.user.onAuth(data.signUp);
-  const handleSignUpError = (error) => console.log(error);
-
   const [auth, { loading }] = useMutation(USER.SIGN_UP_MUTATION, {
-    onCompleted: handleSignUpSuccess,
-    onError: handleSignUpError,
+    onCompleted: (data) => store.user.onAuth(data.signUp),
+    onError: (error) => console.log(error),
   });
 
   return (
@@ -56,6 +55,7 @@ const SignUpPage = () => {
       }}
       validationSchema={SignUpSchema}
       onSubmit={(values, { setSubmitting }) => {
+        recaptchaRef.current.execute();
         const { email, password, firstName, lastName, language, currency } = values;
         setSubmitting(true);
         auth({ variables: { email, password, firstName, lastName, language, currency } });
@@ -74,6 +74,12 @@ const SignUpPage = () => {
         dirty,
       }) => (
         <form onSubmit={handleSubmit}>
+          <ReCAPTCHA
+            ref={recaptchaRef}
+            size="invisible"
+            sitekey="6LehKfoUAAAAAPL1UHtd9gxRbbQPG0TAqi5tM57-"
+            onChange={(token) => console.log(token)}
+          />
           <div className="flex items-center justify-center min-h-screen px-4 py-12 bg-white sm:px-6 lg:px-8">
             <div className="w-full max-w-md">
               <h2 className="mt-6 text-3xl font-extrabold leading-9 text-center text-gray-900">

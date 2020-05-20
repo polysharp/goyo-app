@@ -24,12 +24,10 @@ const SignUpSchema = Yup.object().shape({
     .max(200, 'Please provide a valid email')
     .required('Required'),
   password: Yup.string()
-    .matches(
-      /^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{8,255})/,
-      { excludeEmptyString: true, message: 'Inccorect password format' }
-    )
+    .min(8, 'Minimum of 8 characters')
+    .max(255, 'Maximum of 255 characters')
+    .matches(/\S+/, { excludeEmptyString: true, message: 'Inccorect password format' })
     .required('Required'),
-  confirmPassword: Yup.string().oneOf([Yup.ref('password'), null], 'Passwords must match'),
   language: Yup.string().oneOf(['fr-FR', 'en-EN', 'es-ES']).required('Required'),
   currency: Yup.string().oneOf(['euro', 'dollar', 'yen']).required('Required'),
 });
@@ -51,7 +49,6 @@ const SignUpPage = () => {
       initialValues={{
         email: '',
         password: '',
-        confirmPassword: '',
         firstName: '',
         lastName: '',
         language: i18n.language || 'fr-FR',
@@ -112,7 +109,7 @@ const SignUpPage = () => {
                 <div className="mt-8 rounded-md shadow-sm">
                   <div>
                     <input
-                      className="relative block w-full px-3 py-2 text-gray-900 placeholder-gray-500 border border-gray-300 rounded-md appearance-none focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 sm:text-sm sm:leading-5"
+                      className="relative block w-full px-3 py-2 text-gray-900 placeholder-gray-500 border border-gray-300 rounded-none appearance-none rounded-t-md focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 sm:text-sm sm:leading-5"
                       aria-label="Email address"
                       name="email"
                       type="email"
@@ -122,9 +119,9 @@ const SignUpPage = () => {
                       value={values.email}
                     />
                   </div>
-                  <div className="mt-4">
+                  <div className="-mt-px">
                     <input
-                      className="relative block w-full px-3 py-2 text-gray-900 placeholder-gray-500 border border-gray-300 rounded-none appearance-none rounded-t-md focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 sm:text-sm sm:leading-5"
+                      className="relative block w-full px-3 py-2 text-gray-900 placeholder-gray-500 border border-gray-300 rounded-none appearance-none rounded-b-md focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 sm:text-sm sm:leading-5"
                       aria-label="Password"
                       name="password"
                       type="password"
@@ -132,18 +129,6 @@ const SignUpPage = () => {
                       onChange={handleChange}
                       onBlur={handleBlur}
                       value={values.password}
-                    />
-                  </div>
-                  <div className="-mt-px">
-                    <input
-                      className="relative block w-full px-3 py-2 text-gray-900 placeholder-gray-500 border border-gray-300 rounded-none appearance-none rounded-b-md focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 sm:text-sm sm:leading-5"
-                      aria-label="Confirm password"
-                      name="confirmPassword"
-                      type="password"
-                      placeholder="Confirm password"
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      value={values.confirmPassword}
                     />
                   </div>
                 </div>
@@ -168,9 +153,6 @@ const SignUpPage = () => {
                   {errors.lastName && touched.lastName ? <div>{errors.lastName}</div> : null}
                   {errors.email && touched.email ? <div>{errors.email}</div> : null}
                   {errors.password && touched.password ? <div>{errors.password}</div> : null}
-                  {errors.confirmPassword && touched.confirmPassword ? (
-                    <div>{errors.confirmPassword}</div>
-                  ) : null}
                 </div>
                 <div className="mt-6">
                   <button

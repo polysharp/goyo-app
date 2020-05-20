@@ -2,17 +2,29 @@ import gql from 'graphql-tag';
 
 const SIGN_IN_QUERY = gql`
   mutation SignIn($email: String!, $password: String!) {
-    signIn(user: { email: $email, password: $password }) {
-      token
-    }
+    signIn(user: { email: $email, password: $password })
   }
 `;
 
 const SIGN_UP_QUERY = gql`
-  mutation SignUp($email: String!, $password: String!) {
-    signUp(user: { email: $email, password: $password }) {
-      token
-    }
+  mutation SignUp(
+    $email: String!
+    $password: String!
+    $firstName: String!
+    $lastName: String!
+    $language: String!
+    $currency: String!
+  ) {
+    signUp(
+      user: {
+        email: $email
+        password: $password
+        firstName: $firstName
+        lastName: $lastName
+        language: $language
+        currency: $currency
+      }
+    )
   }
 `;
 

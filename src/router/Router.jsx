@@ -32,7 +32,7 @@ const Router = () => {
       window.removeEventListener('focus', onFocus);
       window.removeEventListener('load', onFocus);
     };
-  }, []);
+  }, [onAuth, onLogout]);
 
   if (!init) return null;
   return isAuthenticated ? (

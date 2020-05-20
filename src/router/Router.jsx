@@ -1,32 +1,34 @@
 import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
-import { observer, inject } from 'mobx-react';
-import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+import { observer } from 'mobx-react';
 
-const Router = ({ store }) => {
-  const { isAuthenticated, onAuth } = store.user;
+import { useStore } from '../store';
+
+import AuthRouter from './AuthRouter';
+import AppRouter from './AppRouter';
+
+const Router = () => {
+  const {
+    user: { isAuthenticated, onAuth },
+  } = useStore();
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (token) {
-      onAuth(token);
-    }
-  }, [onAuth]);
+    const onFocus = () => {
+      const token = localStorage.getItem('token');
+      if (token) {
+        onAuth(token);
+      }
+    };
 
-  return (
-    <BrowserRouter>
-      <div>hello</div>
-    </BrowserRouter>
-  );
+    window.addEventListener('focus', onFocus);
+    window.addEventListener('load', onFocus);
+
+    return () => {
+      window.removeEventListener('focus', onFocus);
+      window.removeEventListener('load', onFocus);
+    };
+  }, []);
+
+  return isAuthenticated ? <AppRouter /> : <AuthRouter />;
 };
 
-Router.propTypes = {
-  store: PropTypes.shape({
-    user: PropTypes.shape({
-      isAuthenticated: PropTypes.bool,
-      onAuth: PropTypes.func,
-    }),
-  }).isRequired,
-};
-
-export default inject('store')(observer(Router));
+export default observer(Router);

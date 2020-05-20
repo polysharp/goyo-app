@@ -36,7 +36,8 @@
     "react-scripts": "3.4.1",
     "remotedev": "^0.2.9",
     "styled-components": "^5.1.0",
-    "tailwind.macro": "^1.0.0-alpha.10"
+    "tailwind.macro": "^1.0.0-alpha.10",
+    "yup": "^0.29.0"
   },
   "devDependencies": {
     "@commitlint/config-conventional": "^8.3.4",

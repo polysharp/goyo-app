@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { BrowserRouter } from 'react-router-dom';
 import { observer } from 'mobx-react';
 
 import { useStore } from '../store';
@@ -35,14 +36,19 @@ const Router = () => {
   }, [onAuth, onLogout]);
 
   if (!init) return null;
-  return isAuthenticated ? (
-    <React.Suspense fallback={<h1>Loading App router</h1>}>
-      <AppRouter />
-    </React.Suspense>
-  ) : (
-    <React.Suspense fallback={<h1>Loading Auth router</h1>}>
-      <AuthRouter />
-    </React.Suspense>
+
+  return (
+    <BrowserRouter>
+      {isAuthenticated ? (
+        <React.Suspense fallback={<h1>Loading App router</h1>}>
+          <AppRouter />
+        </React.Suspense>
+      ) : (
+        <React.Suspense fallback={<h1>Loading Auth router</h1>}>
+          <AuthRouter />
+        </React.Suspense>
+      )}
+    </BrowserRouter>
   );
 };
 

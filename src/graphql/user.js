@@ -2,7 +2,10 @@ import gql from 'graphql-tag';
 
 const SIGN_IN_MUTATION = gql`
   mutation SignIn($email: String!, $password: String!) {
-    signIn(user: { email: $email, password: $password })
+    signIn(user: { email: $email, password: $password }) {
+      token
+      expiresIn
+    }
   }
 `;
 
@@ -24,7 +27,10 @@ const SIGN_UP_MUTATION = gql`
         language: $language
         currency: $currency
       }
-    )
+    ) {
+      token
+      expiresIn
+    }
   }
 `;
 

@@ -1,7 +1,10 @@
 import ApolloClient from 'apollo-boost';
 
 const apolloClient = new ApolloClient({
-  uri: 'https://goyo-api.herokuapp.com/',
+  uri:
+    process.env.NODE_ENV === 'production'
+      ? 'https://goyo-api.herokuapp.com/'
+      : 'http://localhost:3001',
   credentials: 'include',
   request: (operation) => {
     const token = localStorage.getItem('token');

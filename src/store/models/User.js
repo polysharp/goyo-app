@@ -3,21 +3,28 @@ import { types } from 'mobx-state-tree';
 
 const User = types
   .model('User', {
-    bearer: '',
-    email: '',
+    token: '',
+    expiresIn: 0,
     isAuthenticated: false,
+    email: '',
   })
   .views(() => ({}))
   .actions((self) => ({
-    onAuth(token) {
+    onAuth({ token, expiresIn }) {
       localStorage.setItem('token', token);
-      self.bearer = token;
+
+      if (expiresIn) {
+        localStorage.setItem('expiresIn', `${expiresIn}`);
+        self.expiresIn = expiresIn;
+      }
+
+      self.token = token;
       self.isAuthenticated = true;
     },
     onLogout() {
-      localStorage.removeItem('token');
-      self.bearer = '';
-      self.email = '';
+      localStorage.clear();
+      self.token = '';
+      self.expiresIn = 0;
       self.isAuthenticated = false;
     },
     populate(data) {

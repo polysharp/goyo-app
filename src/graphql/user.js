@@ -42,10 +42,19 @@ const ME_QUERY = gql`
   }
 `;
 
+const REFRESH_QUERY = gql`
+  query Refresh {
+    refresh {
+      token
+    }
+  }
+`;
+
 const USER = {
   SIGN_IN_MUTATION,
   SIGN_UP_MUTATION,
   ME_QUERY,
+  REFRESH_QUERY,
 };
 
 export default USER;

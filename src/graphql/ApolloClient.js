@@ -14,6 +14,16 @@ const apolloClient = new ApolloClient({
       },
     });
   },
+  onError: ({ graphQLErrors }) => {
+    if (graphQLErrors)
+      graphQLErrors.map(({ message }) => {
+        if (message === 'Access denied.') {
+          localStorage.clear();
+          window.location = '/';
+        }
+        return message;
+      });
+  },
 });
 
 export default apolloClient;

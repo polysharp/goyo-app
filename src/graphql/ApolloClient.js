@@ -3,26 +3,14 @@ import ApolloClient from 'apollo-boost';
 const apolloClient = new ApolloClient({
   uri:
     process.env.NODE_ENV === 'production'
-      ? 'https://goyo-api.herokuapp.com/'
-      : 'http://localhost:3001',
+      ? process.env.REACT_APP_API_PROD
+      : process.env.REACT_APP_API_DEV,
   credentials: 'include',
-  request: (operation) => {
-    const token = localStorage.getItem('token');
-    operation.setContext({
-      headers: {
-        authorization: token || '',
-      },
-    });
-  },
-  onError: ({ graphQLErrors }) => {
-    if (graphQLErrors)
-      graphQLErrors.map(({ message }) => {
-        if (message === 'Access denied.') {
-          localStorage.clear();
-          window.location = '/';
-        }
-        return message;
-      });
+  onError: ({ networkError }) => {
+    if (networkError && networkError.statusCode === 401) {
+      document.cookie = `cookiename=${process.env.REACT_APP_AUTH_COOKIE};expires=1998-05-10T00:00:00Z`;
+      window.location = '/';
+    }
   },
 });
 

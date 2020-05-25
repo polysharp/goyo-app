@@ -27,7 +27,7 @@ const SignInPage = () => {
   const recaptchaRef = React.createRef();
 
   const [auth, { loading }] = useMutation(USER.SIGN_IN_MUTATION, {
-    onCompleted: (data) => store.user.onAuth(data.signIn),
+    onCompleted: () => store.user.sign(),
     onError: (error) => console.log(error),
   });
 

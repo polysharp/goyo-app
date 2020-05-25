@@ -8,7 +8,7 @@ const apolloClient = new ApolloClient({
   credentials: 'include',
   onError: ({ networkError }) => {
     if (networkError && networkError.statusCode === 401) {
-      document.cookie = `cookiename=${process.env.REACT_APP_AUTH_COOKIE};expires=1998-05-10T00:00:00Z`;
+      document.cookie = `${process.env.REACT_APP_AUTH_COOKIE}=;expires=Thu, 2 Aug 2001 20:47:11 UTC;`;
       window.location = '/';
     }
   },

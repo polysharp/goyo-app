@@ -39,7 +39,7 @@ const SignUpPage = () => {
   const { i18n } = useTranslation();
 
   const [auth, { loading }] = useMutation(USER.SIGN_UP_MUTATION, {
-    onCompleted: (data) => store.user.onAuth(data.signUp),
+    onCompleted: () => store.user.sign(),
     onError: (error) => console.log(error),
   });
 

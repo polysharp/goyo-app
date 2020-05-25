@@ -12,16 +12,14 @@ import theme from './theme';
 import './locales/i18n';
 import './styles/tailwind.generated.css';
 
-const Router = React.lazy(() => import('./router/Router'));
+import Router from './router/Router';
 
 ReactDOM.render(
   <React.StrictMode>
     <ApolloProvider client={apolloClient}>
       <StoreProvider>
         <ThemeProvider theme={theme}>
-          <React.Suspense fallback={<h1>Loading App router</h1>}>
-            <Router />
-          </React.Suspense>
+          <Router />
         </ThemeProvider>
       </StoreProvider>
     </ApolloProvider>

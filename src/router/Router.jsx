@@ -7,22 +7,19 @@ import { useStore } from '../store';
 const AuthRouter = React.lazy(() => import('./AuthRouter'));
 const AppRouter = React.lazy(() => import('./AppRouter'));
 
+const checkAuthCookie = () => document.cookie.includes(process.env.REACT_APP_AUTH_COOKIE);
+
 const Router = () => {
   const [init, setInit] = useState(false);
 
   const {
-    user: { isAuthenticated, onAuth, onLogout },
+    user: { signed, sign, unsign },
   } = useStore();
 
   useEffect(() => {
     const onFocus = () => {
-      const token = localStorage.getItem('token');
-      if (token) {
-        onAuth({ token });
-      } else {
-        onLogout();
-      }
-
+      if (checkAuthCookie()) sign();
+      else unsign();
       setInit(true);
     };
 
@@ -33,18 +30,18 @@ const Router = () => {
       window.removeEventListener('focus', onFocus);
       window.removeEventListener('load', onFocus);
     };
-  }, [onAuth, onLogout]);
+  }, [sign, unsign]);
 
   if (!init) return null;
 
   return (
     <BrowserRouter>
-      {isAuthenticated ? (
-        <React.Suspense fallback={<h1>Loading App router</h1>}>
+      {signed ? (
+        <React.Suspense fallback={<div />}>
           <AppRouter />
         </React.Suspense>
       ) : (
-        <React.Suspense fallback={<h1>Loading Auth router</h1>}>
+        <React.Suspense fallback={<div />}>
           <AuthRouter />
         </React.Suspense>
       )}

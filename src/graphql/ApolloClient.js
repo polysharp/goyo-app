@@ -8,8 +8,8 @@ const apolloClient = new ApolloClient({
   credentials: 'include',
   onError: ({ networkError }) => {
     if (networkError && networkError.statusCode === 401) {
-      document.cookie = `${process.env.REACT_APP_AUTH_COOKIE}=;expires=Thu, 2 Aug 2001 20:47:11 UTC;`;
-      window.location = '/';
+      // document.cookie = `${process.env.REACT_APP_AUTH_COOKIE}=;expires=Thu, 2 Aug 2001 20:47:11 UTC;`;
+      // window.location = '/';
     }
   },
 });

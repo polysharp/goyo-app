@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/5ea30a12-6d57-4979-8f4f-bfe9f19b5b1c/deploy-status)](https://goyo.netlify.app/)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Features:

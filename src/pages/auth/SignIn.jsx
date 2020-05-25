@@ -112,7 +112,7 @@ const SignInPage = () => {
                   to="/auth/signup"
                   style={isSubmitting || loading ? { pointerEvents: 'none' } : null}
                   className={`block text-center mt-6 w-full px-4 py-2 font-semibold text-teal-900 rounded-md border-2 border-teal-900 focus:outline-none focus:shadow-outline ${
-                    !(isValid && dirty) || isSubmitting
+                    isSubmitting || loading
                       ? 'opacity-50'
                       : 'hover:bg-teal-700 hover:border-teal-700 focus:border-teal-700 hover:text-white'
                   }`}

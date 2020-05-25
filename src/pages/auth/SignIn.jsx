@@ -63,21 +63,19 @@ const SignInPage = () => {
                 </h2>
               </div>
               <div className="w-full mt-8">
-                <div>
-                  <input
-                    className="relative block w-full px-3 py-2 text-teal-900 placeholder-teal-900 bg-transparent border border-transparent rounded-md focus:outline-none focus:border-teal-700 "
-                    aria-label="Email"
-                    name="email"
-                    type="email"
-                    placeholder="Email"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={values.email}
-                  />
-                </div>
+                <input
+                  className="relative block w-full px-3 py-2 text-teal-900 placeholder-teal-900 bg-gray-100 border border-transparent rounded-md focus:outline-none focus:border-teal-700"
+                  aria-label="Email"
+                  name="email"
+                  type="email"
+                  placeholder="Email"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.email}
+                />
                 <div className="mt-4">
                   <input
-                    className="relative block w-full px-3 py-2 text-teal-900 placeholder-teal-900 bg-transparent border border-transparent rounded-md focus:outline-none focus:border-teal-700"
+                    className="relative block w-full px-3 py-2 text-teal-900 placeholder-teal-900 bg-gray-100 border border-transparent rounded-md focus:outline-none focus:border-teal-700"
                     aria-label="Password"
                     name="password"
                     type="password"
@@ -88,7 +86,7 @@ const SignInPage = () => {
                   />
                 </div>
               </div>
-              <div className="w-full mt-6">
+              <div className="w-full mt-8">
                 <button
                   type="submit"
                   disabled={!(isValid && dirty) || isSubmitting || loading}
@@ -110,17 +108,21 @@ const SignInPage = () => {
                     </div>
                   </div>
                 </div>
-                <button
-                  type="submit"
-                  disabled={!(isValid && dirty) || isSubmitting || loading}
-                  className={`mt-6 w-full px-4 py-2 font-semibold text-teal-900 rounded-md border-2 border-teal-900 focus:outline-none focus:shadow-outline ${
+                <NavLink
+                  to="/auth/signup"
+                  style={
+                    !(isValid && dirty) || isSubmitting || loading
+                      ? { pointerEvents: 'none' }
+                      : null
+                  }
+                  className={`block text-center mt-6 w-full px-4 py-2 font-semibold text-teal-900 rounded-md border-2 border-teal-900 focus:outline-none focus:shadow-outline ${
                     !(isValid && dirty) || isSubmitting
-                      ? 'cursor-not-allowed opacity-50'
+                      ? 'opacity-50'
                       : 'hover:bg-teal-700 hover:border-teal-700 focus:border-teal-700 hover:text-white'
                   }`}
                 >
                   Créer un compte
-                </button>
+                </NavLink>
               </div>
             </div>
             <ReCAPTCHA

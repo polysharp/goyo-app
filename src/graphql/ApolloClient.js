@@ -3,7 +3,7 @@ import ApolloClient from 'apollo-boost';
 const apolloClient = new ApolloClient({
   uri:
     process.env.NODE_ENV === 'production'
-      ? process.env.REACT_APP_API_PROD
+      ? 'https://api-goyo.netlify.app'
       : process.env.REACT_APP_API_DEV,
   credentials: 'include',
   onError: ({ networkError }) => {

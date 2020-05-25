@@ -149,11 +149,7 @@ const SignUpPage = () => {
                 </div>
                 <NavLink
                   to="/auth/signin"
-                  style={
-                    !(isValid && dirty) || isSubmitting || loading
-                      ? { pointerEvents: 'none' }
-                      : null
-                  }
+                  style={isSubmitting || loading ? { pointerEvents: 'none' } : null}
                   className={`block text-center mt-6 w-full px-4 py-2 font-semibold text-teal-900 rounded-md border-2 border-teal-900 focus:outline-none focus:shadow-outline ${
                     !(isValid && dirty) || isSubmitting
                       ? 'opacity-50'

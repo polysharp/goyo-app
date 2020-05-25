@@ -1,15 +1,14 @@
 import React from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 import { SignIn, SignUp } from '../pages';
+import Redirector from './Redirector';
 
 const AppRouter = () => (
   <Switch>
     <Route path="/auth/signin" component={SignIn} />
     <Route path="/auth/signup" component={SignUp} />
-    <Route path="*">
-      <Redirect to="/auth/signin" />
-    </Route>
+    <Redirector isAuthenticated={false} />
   </Switch>
 );
 

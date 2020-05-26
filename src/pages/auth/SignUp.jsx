@@ -9,6 +9,8 @@ import ReCAPTCHA from 'react-google-recaptcha';
 import { useStore } from '../../store';
 import { USER } from '../../graphql';
 
+import { Divider, Form, Heading, Input, Button, Link } from '../../components';
+
 const SignUpSchema = Yup.object().shape({
   firstName: Yup.string()
     .min(2, 'What a short name...')
@@ -74,91 +76,71 @@ const SignUpPage = () => {
           isValid,
           dirty,
         }) => (
-          <form onSubmit={handleSubmit}>
-            <div className="flex flex-col items-center justify-center h-screen px-4 md:px-6 lg:px-10 xl:px-16">
-              <div className="w-full">
-                <h2 className="text-xl font-bold text-center text-teal-900 uppercase">
-                  Bienvenue chez Goyo
-                </h2>
-              </div>
-              <div className="flex flex-row items-center justify-between w-full mt-8">
-                <input
-                  className="relative block w-full px-3 py-2 mr-2 text-teal-900 placeholder-teal-900 bg-gray-100 border border-transparent rounded-md focus:outline-none focus:border-teal-700"
-                  aria-label="First name"
-                  name="firstName"
-                  type="text"
-                  placeholder="Prénom"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.firstName}
-                />
-                <input
-                  className="relative block w-full px-3 py-2 ml-2 text-teal-900 placeholder-teal-900 bg-gray-100 border border-transparent rounded-md focus:outline-none focus:border-teal-700"
-                  aria-label="Last name"
-                  name="lastName"
-                  type="test"
-                  placeholder="Nom"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.lastName}
-                />
-              </div>
-              <div className="w-full mt-6">
-                <input
-                  className="relative block w-full px-3 py-2 text-teal-900 placeholder-teal-900 bg-gray-100 border border-transparent rounded-md focus:outline-none focus:border-teal-700"
-                  aria-label="Email"
-                  name="email"
-                  type="email"
-                  placeholder="Email"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.email}
-                />
-                <input
-                  className="relative block w-full px-3 py-2 mt-4 text-teal-900 placeholder-teal-900 bg-gray-100 border border-transparent rounded-md focus:outline-none focus:border-teal-700"
-                  aria-label="Password"
-                  name="password"
-                  type="password"
-                  placeholder="Password"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.password}
-                />
-              </div>
-              <div className="w-full mt-8">
-                <button
-                  type="submit"
-                  disabled={!(isValid && dirty) || isSubmitting || loading}
-                  className={`bg-teal-900 w-full px-4 py-2 font-semibold text-white rounded-md border border-transparent focus:outline-none focus:shadow-outline ${
-                    !(isValid && dirty) || isSubmitting
-                      ? 'cursor-not-allowed opacity-50'
-                      : 'hover:bg-teal-700 focus:border-teal-700'
-                  }`}
-                >
-                  Créer mon compte
-                </button>
-                <div className="mt-6">
-                  <div className="relative">
-                    <div className="absolute inset-0 flex items-center">
-                      <div className="w-full border-t border-gray-300" />
-                    </div>
-                    <div className="relative flex justify-center text-sm leading-5">
-                      <span className="px-2 text-gray-500 bg-white">OU</span>
-                    </div>
-                  </div>
-                </div>
-                <NavLink
-                  to="/auth/signin"
-                  style={isSubmitting || loading ? { pointerEvents: 'none' } : null}
-                  className={`block text-center mt-6 w-full px-4 py-2 font-semibold text-teal-900 rounded-md border-2 border-teal-900 focus:outline-none focus:shadow-outline ${
-                    isSubmitting || loading
-                      ? 'opacity-50'
-                      : 'hover:bg-teal-700 hover:border-teal-700 focus:border-teal-700 hover:text-white'
-                  }`}
-                >
-                  Se connecter
-                </NavLink>
-              </div>
+          <Form onSubmit={handleSubmit}>
+            <div className="w-full">
+              <Heading>Création d&apos;un compte Goyo</Heading>
+            </div>
+            <div className="flex flex-row items-center justify-between w-full mt-8">
+              <Input
+                className="mr-2 placeholder-teal-900"
+                aria-label="First name"
+                name="firstName"
+                type="text"
+                placeholder="Prénom"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.firstName}
+              />
+              <Input
+                className="ml-2 placeholder-teal-900"
+                aria-label="Last name"
+                name="lastName"
+                type="test"
+                placeholder="Nom"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.lastName}
+              />
+            </div>
+            <div className="w-full mt-6">
+              <Input
+                className="placeholder-teal-900"
+                aria-label="Email"
+                name="email"
+                type="email"
+                placeholder="Email"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.email}
+              />
+              <Input
+                className="mt-4 placeholder-teal-900"
+                aria-label="Password"
+                name="password"
+                type="password"
+                placeholder="Password"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.password}
+              />
+            </div>
+            <div className="w-full mt-8">
+              <Button
+                type="submit"
+                disabled={!(isValid && dirty) || isSubmitting || loading}
+                className="transition duration-150 ease-in"
+              >
+                Créer mon compte
+              </Button>
+              <Divider label="OU" />
+              <Link
+                as={NavLink}
+                to="/auth/signin"
+                disabled={isSubmitting || loading}
+                className="mt-6 transition duration-150 ease-in"
+              >
+                Se connecter
+              </Link>
             </div>
             <ReCAPTCHA
               ref={recaptchaRef}
@@ -167,7 +149,7 @@ const SignUpPage = () => {
               sitekey="6LehKfoUAAAAAPL1UHtd9gxRbbQPG0TAqi5tM57-"
               onChange={(token) => console.log(token)}
             />
-          </form>
+          </Form>
         )}
       </Formik>
     </main>

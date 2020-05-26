@@ -7,7 +7,7 @@ import { useStore } from '../store';
 const AuthRouter = React.lazy(() => import('./AuthRouter'));
 const AppRouter = React.lazy(() => import('./AppRouter'));
 
-const checkAccessToken = () => localStorage.getItem(process.env.REACT_APP_AUTH_TOKEN) !== null;
+const checkAccessToken = () => localStorage.getItem('user') !== null;
 
 const Router = () => {
   const [init, setInit] = useState(false);

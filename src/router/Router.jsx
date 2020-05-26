@@ -17,18 +17,21 @@ const Router = () => {
   } = useStore();
 
   useEffect(() => {
+    if (checkAccessToken()) sign();
+    else unsign();
+
     const onFocus = () => {
       if (checkAccessToken()) sign();
       else unsign();
-      setInit(true);
     };
 
     window.addEventListener('focus', onFocus);
     window.addEventListener('load', onFocus);
     window.addEventListener('storage', onFocus);
+    setInit(true);
 
     return () => {
-      window.addEventListener('storage', onFocus);
+      window.removeEventListener('storage', onFocus);
       window.removeEventListener('focus', onFocus);
       window.removeEventListener('load', onFocus);
     };

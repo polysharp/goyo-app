@@ -15,7 +15,6 @@ const httpLink = createHttpLink({
 const errorLink = onError(({ networkError }) => {
   if (networkError && networkError.statusCode === 401) {
     localStorage.clear();
-    window.location = '/';
   }
 });
 
@@ -23,7 +22,8 @@ const authMiddleware = new ApolloLink((operation, forward) => {
   operation.setContext(({ headers = {} }) => ({
     headers: {
       ...headers,
-      authorization: localStorage.getItem(process.env.REACT_APP_AUTH_TOKEN) || null,
+      [process.env.REACT_APP_AUTH_TOKEN]:
+        localStorage.getItem(process.env.REACT_APP_AUTH_TOKEN) || null,
     },
   }));
 

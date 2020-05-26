@@ -25,8 +25,10 @@ const Router = () => {
 
     window.addEventListener('focus', onFocus);
     window.addEventListener('load', onFocus);
+    window.addEventListener('storage', onFocus);
 
     return () => {
+      window.addEventListener('storage', onFocus);
       window.removeEventListener('focus', onFocus);
       window.removeEventListener('load', onFocus);
     };

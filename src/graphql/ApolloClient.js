@@ -38,6 +38,7 @@ const refreshMiddleware = new ApolloLink((operation, forward) => {
     if (headers) {
       const token = headers.get('authorization');
       if (token) {
+        console.log('Apollo - Refreshing client token');
         localStorage.setItem('user', token);
       }
     }

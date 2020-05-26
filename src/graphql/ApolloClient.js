@@ -14,9 +14,8 @@ const httpLink = createHttpLink({
 
 const errorLink = onError(({ networkError }) => {
   if (networkError && networkError.statusCode === 401) {
-    // localStorage.clear();
-    // window.location = '/';
-    console.log('401 - DETECTED');
+    localStorage.clear();
+    window.location = '/';
   }
 });
 

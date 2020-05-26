@@ -9,7 +9,7 @@ import ReCAPTCHA from 'react-google-recaptcha';
 import { useStore } from '../../store';
 import { USER } from '../../graphql';
 
-import { Divider, Form, Heading, Input, Button, Link } from '../../components';
+import { Divider, Error, Form, Heading, Input, Button, Link } from '../../components';
 
 const SignUpSchema = Yup.object().shape({
   firstName: Yup.string()
@@ -124,6 +124,7 @@ const SignUpPage = () => {
                 value={values.password}
               />
             </div>
+            {!isValid && <Error errors={errors} touched={touched} />}
             <div className="w-full mt-8">
               <Button
                 type="submit"

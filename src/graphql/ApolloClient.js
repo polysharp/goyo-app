@@ -22,8 +22,7 @@ const authMiddleware = new ApolloLink((operation, forward) => {
   operation.setContext(({ headers = {} }) => ({
     headers: {
       ...headers,
-      [process.env.REACT_APP_AUTH_TOKEN]:
-        localStorage.getItem(process.env.REACT_APP_AUTH_TOKEN) || null,
+      authorization: localStorage.getItem('user') || null,
     },
   }));
 
@@ -37,9 +36,9 @@ const refreshMiddleware = new ApolloLink((operation, forward) => {
     } = operation.getContext();
 
     if (headers) {
-      const token = headers.get(process.env.REACT_APP_AUTH_TOKEN);
+      const token = headers.get('authorization');
       if (token) {
-        localStorage.setItem(process.env.REACT_APP_AUTH_TOKEN, token);
+        localStorage.setItem('user', token);
       }
     }
 

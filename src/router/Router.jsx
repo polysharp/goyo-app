@@ -7,7 +7,7 @@ import { useStore } from '../store';
 const AuthRouter = React.lazy(() => import('./AuthRouter'));
 const AppRouter = React.lazy(() => import('./AppRouter'));
 
-const checkAuthCookie = () => document.cookie.includes(process.env.REACT_APP_AUTH_COOKIE);
+const checkAccessToken = () => localStorage.getItem(process.env.REACT_APP_AUTH_TOKEN) !== null;
 
 const Router = () => {
   const [init, setInit] = useState(false);
@@ -18,7 +18,7 @@ const Router = () => {
 
   useEffect(() => {
     const onFocus = () => {
-      if (checkAuthCookie()) sign();
+      if (checkAccessToken()) sign();
       else unsign();
       setInit(true);
     };

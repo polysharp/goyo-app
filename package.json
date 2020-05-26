@@ -70,6 +70,11 @@
       "last 1 safari version"
     ]
   },
+  "buildpacks": [
+    {
+      "url": "mars/create-react-app"
+    }
+  ],
   "husky": {
     "hooks": {
       "pre-commit": "npm run lint",

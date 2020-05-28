@@ -7,13 +7,14 @@ import Redirector from './Redirector';
 import { Layout, Menu } from '../components';
 
 const AppRouter = () => (
-  <Switch>
-    <Layout>
-      <Menu />
+  <Layout>
+    <Menu />
+    <Switch>
       <Route exact path="/" component={Dashboard} />
+      <Route exact path="/une/route" component={() => <h1>une route</h1>} />
       <Redirector isAuthenticated />
-    </Layout>
-  </Switch>
+    </Switch>
+  </Layout>
 );
 
 export default AppRouter;

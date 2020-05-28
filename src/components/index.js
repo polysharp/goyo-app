@@ -1,5 +1,5 @@
+import Menu from './menu/Menu';
 import Layout from './Layout';
-import Menu from './Menu';
 import Board from './Board';
 
 import Divider from './Divider';

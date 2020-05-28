@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { NavLink, useLocation } from 'react-router-dom';
 
 import Button from './shared/Button';
 
 const links = [
   {
-    id: '0',
+    id: 0,
     to: '/',
     color: 'text-teal-500',
     icon: (
@@ -19,8 +19,8 @@ const links = [
     ),
   },
   {
-    id: '1',
-    to: '/une/route',
+    id: 1,
+    to: '/',
     color: 'text-purple-500',
     icon: (
       <svg className={`transition-all ease-out `} viewBox="0 0 24 24" fill="currentColor">
@@ -33,8 +33,8 @@ const links = [
     ),
   },
   {
-    id: '2',
-    to: '/une/route/qui/existe/pas',
+    id: 2,
+    to: '/',
     color: 'text-blue-500',
     icon: (
       <svg className={`transition-all ease-out `} viewBox="0 0 24 24" fill="currentColor">
@@ -52,7 +52,7 @@ const links = [
     ),
   },
   {
-    id: '3',
+    id: 3,
     to: '/',
     color: 'text-red-500',
     icon: (
@@ -66,7 +66,7 @@ const links = [
     ),
   },
   {
-    id: '4',
+    id: 4,
     to: '/',
     color: 'text-indigo-500',
     icon: (
@@ -92,7 +92,13 @@ const links = [
 ];
 
 const Nav = () => {
+  const location = useLocation();
   const [selected, setSelected] = useState(0);
+
+  useEffect(() => {
+    const current = links.filter((link) => link.to === location.pathname);
+    if (current[0]) setSelected(current[0].id);
+  }, [location.pathname]);
 
   return (
     <div className="relative flex-grow">

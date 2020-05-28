@@ -7,7 +7,7 @@ const Logo = () => (
   <div className="flex flex-row items-center justify-center w-full h-20">
     <Button
       as={NavLink}
-      className="text-white transition-all duration-200 ease-in hover:text-black focus:text-black"
+      className="text-white transition-all duration-200 ease-in hover:text-yellow-500 focus:text-yellow-500"
       to="/"
     >
       <svg viewBox="0 0 24 24" fill="currentColor">

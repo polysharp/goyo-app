@@ -21,7 +21,7 @@ const links = [
   {
     id: 1,
     to: '/',
-    color: 'text-purple-500',
+    color: 'text-yellow-500',
     icon: (
       <svg className={`transition-all ease-out `} viewBox="0 0 24 24" fill="currentColor">
         <path

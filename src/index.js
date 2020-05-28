@@ -10,6 +10,7 @@ import { apolloClient } from './graphql';
 import theme from './theme';
 
 import './locales/i18n';
+import './theme/font-awesome';
 import './styles/tailwind.generated.css';
 
 import Router from './router/Router';

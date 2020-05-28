@@ -61,7 +61,7 @@ const SignInPage = () => {
             </div>
             <div className="w-full mt-8">
               <Input
-                className="placeholder-teal-900"
+                className="placeholder-gray-900"
                 aria-label="Email"
                 name="email"
                 type="email"
@@ -72,7 +72,7 @@ const SignInPage = () => {
               />
               <div className="mt-4">
                 <Input
-                  className="placeholder-teal-900"
+                  className="placeholder-gray-900"
                   aria-label="Password"
                   name="password"
                   type="password"

@@ -3,7 +3,7 @@
 @tailwind components;
 
 html {
-  @apply antialiased bg-teal-900;
+  @apply antialiased bg-gray-900;
   text-rendering: optimizeLegibility;
 }
 

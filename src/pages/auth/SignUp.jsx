@@ -82,7 +82,7 @@ const SignUpPage = () => {
             </div>
             <div className="flex flex-row items-center justify-between w-full mt-8">
               <Input
-                className="mr-2 placeholder-teal-900"
+                className="mr-2 placeholder-gray-900"
                 aria-label="First name"
                 name="firstName"
                 type="text"
@@ -92,7 +92,7 @@ const SignUpPage = () => {
                 value={values.firstName}
               />
               <Input
-                className="ml-2 placeholder-teal-900"
+                className="ml-2 placeholder-gray-900"
                 aria-label="Last name"
                 name="lastName"
                 type="test"
@@ -104,7 +104,7 @@ const SignUpPage = () => {
             </div>
             <div className="w-full mt-6">
               <Input
-                className="placeholder-teal-900"
+                className="placeholder-gray-900"
                 aria-label="Email"
                 name="email"
                 type="email"
@@ -114,7 +114,7 @@ const SignUpPage = () => {
                 value={values.email}
               />
               <Input
-                className="mt-4 placeholder-teal-900"
+                className="mt-4 placeholder-gray-900"
                 aria-label="Password"
                 name="password"
                 type="password"

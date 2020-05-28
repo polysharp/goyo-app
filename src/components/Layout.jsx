@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Layout = ({ children }) => (
-  <main className="min-w-full min-h-screen bg-teal-900">{children}</main>
+  <main className="min-w-full min-h-screen bg-gray-900">{children}</main>
 );
 
 Layout.propTypes = {

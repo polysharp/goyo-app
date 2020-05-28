@@ -4,11 +4,15 @@ import { Route, Switch } from 'react-router-dom';
 import { Dashboard } from '../pages';
 import Redirector from './Redirector';
 
+import { Layout, Menu } from '../components';
+
 const AppRouter = () => (
   <Switch>
-    <Route exact path="/" component={Dashboard} />
-    <Route path="/une/route/loin" component={() => <h1>route loin</h1>} />
-    <Redirector isAuthenticated />
+    <Layout>
+      <Menu />
+      <Route exact path="/" component={Dashboard} />
+      <Redirector isAuthenticated />
+    </Layout>
   </Switch>
 );
 

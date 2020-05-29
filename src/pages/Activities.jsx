@@ -2,16 +2,16 @@ import React from 'react';
 import { observer } from 'mobx-react';
 
 import { useStore } from '../store';
-import { Board, Heading, Header } from '../components';
+import { Board, Header, Heading } from '../components';
 
-const DashboardPage = () => {
+const RentersPage = () => {
   const { user } = useStore();
 
   return (
     <Board>
       <Header>
         <div>
-          <Heading>Tableau de bords</Heading>
+          <Heading>Activités</Heading>
         </div>
         <div>
           <h2>Button</h2>
@@ -22,4 +22,4 @@ const DashboardPage = () => {
   );
 };
 
-export default observer(DashboardPage);
+export default observer(RentersPage);

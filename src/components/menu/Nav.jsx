@@ -50,7 +50,7 @@ const links = [
   },
   {
     id: 3,
-    to: '/',
+    to: '/activities',
     icon: (
       <svg viewBox="0 0 24 24" fill="currentColor">
         <path
@@ -63,7 +63,7 @@ const links = [
   },
   {
     id: 4,
-    to: '/',
+    to: '/statistics',
     icon: (
       <svg viewBox="0 0 24 24" fill="currentColor">
         <path

@@ -9,7 +9,7 @@ import { useStore } from '../store';
 
 import Redirector from './Redirector';
 import { Layout, Menu } from '../components';
-import { Dashboard, Renters, Properties } from '../pages';
+import { Dashboard, Renters, Properties, Activites, Statistics } from '../pages';
 
 const AppRouter = () => {
   const { user } = useStore();
@@ -25,6 +25,8 @@ const AppRouter = () => {
         <Route exact path="/" component={Dashboard} />
         <Route exact path="/renters" component={Renters} />
         <Route exact path="/properties" component={Properties} />
+        <Route exact path="/activities" component={Activites} />
+        <Route exact path="/statistics" component={Statistics} />
         <Redirector isAuthenticated />
       </Switch>
     </Layout>

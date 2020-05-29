@@ -1,12 +1,16 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { IconButton } from '../library';
 
-const Settings = () => (
+const Settings = ({ openProfileModal }) => (
   <div className="flex flex-col items-center justify-between w-full mb-2">
     <div className="flex flex-row items-center justify-center">
-      <IconButton className="transition-all duration-200 ease-in">
+      <IconButton
+        className="transition-all duration-200 ease-in"
+        onClick={() => openProfileModal(true)}
+      >
         <FontAwesomeIcon className="text-2xl" icon="cogs" />
       </IconButton>
     </div>
@@ -21,5 +25,9 @@ const Settings = () => (
     </div>
   </div>
 );
+
+Settings.propTypes = {
+  openProfileModal: PropTypes.func.isRequired,
+};
 
 export default Settings;

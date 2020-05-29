@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import { observer } from 'mobx-react';
@@ -9,10 +9,14 @@ import { useStore } from '../store';
 
 import Redirector from './Redirector';
 import { Layout, Menu } from '../components';
+
 import { Dashboard, Renters, Properties, Activites, Statistics } from '../pages';
+import Profile from '../pages/modals';
 
 const AppRouter = () => {
   const { user } = useStore();
+
+  const [profileModalOpen, setProfileModalOpen] = useState(true);
 
   useQuery(USER.ME_QUERY, {
     onCompleted: (data) => user.populate(data),
@@ -20,7 +24,7 @@ const AppRouter = () => {
 
   return (
     <Layout>
-      <Menu />
+      <Menu openProfileModal={setProfileModalOpen} />
       <Switch>
         <Route exact path="/" component={Dashboard} />
         <Route exact path="/renters" component={Renters} />
@@ -29,6 +33,7 @@ const AppRouter = () => {
         <Route exact path="/statistics" component={Statistics} />
         <Redirector isAuthenticated />
       </Switch>
+      <Profile isOpen={profileModalOpen} setOpen={setProfileModalOpen} />
     </Layout>
   );
 };

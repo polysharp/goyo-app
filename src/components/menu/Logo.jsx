@@ -1,13 +1,10 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-import Button from './shared/Button';
-
 const Logo = () => (
   <div className="flex flex-row items-center justify-center w-full h-20">
-    <Button
-      as={NavLink}
-      className="text-white transition-all duration-200 ease-in hover:text-purple-500 focus:text-purple-500"
+    <NavLink
+      className="w-10 h-10 text-white transition-all duration-200 ease-in rounded-lg focus:outline-none focus:shadow-outline"
       to="/"
     >
       <svg viewBox="0 0 24 24" fill="currentColor">
@@ -17,7 +14,7 @@ const Logo = () => (
           transform="translate(13.113 20.16)"
         />
       </svg>
-    </Button>
+    </NavLink>
   </div>
 );
 

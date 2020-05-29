@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 
-import Button from './shared/Button';
+import { IconButton } from '../library';
 
 const links = [
   {
     id: 0,
     to: '/',
-    color: 'text-teal-500',
     icon: (
-      <svg className={`transition-all ease-out `} viewBox="0 0 24 24" fill="currentColor">
+      <svg viewBox="0 0 24 24" fill="currentColor">
         <path
           fillRule="evenodd"
           clipRule="evenodd"
@@ -21,9 +20,8 @@ const links = [
   {
     id: 1,
     to: '/',
-    color: 'text-yellow-500',
     icon: (
-      <svg className={`transition-all ease-out `} viewBox="0 0 24 24" fill="currentColor">
+      <svg viewBox="0 0 24 24" fill="currentColor">
         <path
           fillRule="evenodd"
           clipRule="evenodd"
@@ -35,9 +33,8 @@ const links = [
   {
     id: 2,
     to: '/',
-    color: 'text-blue-500',
     icon: (
-      <svg className={`transition-all ease-out `} viewBox="0 0 24 24" fill="currentColor">
+      <svg viewBox="0 0 24 24" fill="currentColor">
         <path
           fillRule="evenodd"
           clipRule="evenodd"
@@ -54,9 +51,8 @@ const links = [
   {
     id: 3,
     to: '/',
-    color: 'text-red-500',
     icon: (
-      <svg className="transition-all ease-out" viewBox="0 0 24 24" fill="currentColor">
+      <svg viewBox="0 0 24 24" fill="currentColor">
         <path
           fillRule="evenodd"
           clipRule="evenodd"
@@ -68,7 +64,6 @@ const links = [
   {
     id: 4,
     to: '/',
-    color: 'text-indigo-500',
     icon: (
       <svg viewBox="0 0 24 24" fill="currentColor">
         <path
@@ -108,17 +103,16 @@ const Nav = () => {
       />
       <nav className="relative flex flex-col items-center">
         {links.map((link, index) => (
-          <Button
+          <IconButton
             key={link.id}
             as={NavLink}
             to={link.to}
-            className={`p-2 my-1 transition-all duration-200 ease-out ${
-              selected === index ? link.color : `text-white focus:${link.color} hover:${link.color}`
-            }`}
+            className={`transition-all duration-200 ease-out `}
+            selected={selected === index}
             onClick={() => setSelected(index)}
           >
             {link.icon}
-          </Button>
+          </IconButton>
         ))}
       </nav>
     </div>

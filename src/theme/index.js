@@ -1,5 +1,4 @@
-const theme = {
-  background: '#FBFBFB',
-};
+import { ThemeManagerContext, ThemeManagerProvider, StyledThemeProvider } from './helpers';
+import GlobalStyle from './constants';
 
-export default theme;
+export { ThemeManagerContext, ThemeManagerProvider, StyledThemeProvider, GlobalStyle };

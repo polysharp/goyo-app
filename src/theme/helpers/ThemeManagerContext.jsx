@@ -7,12 +7,17 @@ const ThemeManagerContext = createContext({
 });
 
 const ThemeManagerProvider = ({ children }) => {
-  const [theme, setTheme] = useState('');
+  const [theme, _setTheme] = useState('');
 
   // const toggleTheme = () => {
   //   localStorage.setItem('user_theme_dark', JSON.stringify(!isDark));
   //   setIsDark(!isDark);
   // };
+
+  const setTheme = (name) => {
+    localStorage.setItem('user_theme', name);
+    _setTheme(name);
+  };
 
   useEffect(() => {
     const themeFromLocalStorage = localStorage.getItem('user_theme');

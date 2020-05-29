@@ -1,12 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import tw from 'tailwind.macro';
 
-const Layout = ({ children }) => (
-  <main className="min-w-full min-h-screen bg-gray-900">{children}</main>
-);
-
-Layout.propTypes = {
-  children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]).isRequired,
-};
+const Layout = styled.main`
+  ${tw`min-h-screen min-w-screen`}
+  background-color: ${({ theme }) => theme['900']};
+`;
 
 export default Layout;

@@ -14,7 +14,7 @@ const httpLink = createHttpLink({
 
 const errorLink = onError(({ networkError }) => {
   if (networkError && networkError.statusCode === 401) {
-    localStorage.clear();
+    localStorage.removeItem('user');
   }
 });
 

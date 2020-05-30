@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import { ThemeProvider } from 'styled-components';
 
 import { ThemeManagerContext } from './ThemeManagerContext';
-import { schemesName } from '../schemes';
+import { getSchemeWithName } from '../schemes';
 
 const StyledThemeProvider = ({ children }) => {
   const { theme } = useContext(ThemeManagerContext);
-  const currentTheme = schemesName(theme);
+  const currentTheme = getSchemeWithName(theme);
 
   return <ThemeProvider theme={currentTheme}>{children}</ThemeProvider>;
 };

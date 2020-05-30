@@ -5,5 +5,8 @@ module.exports = {
       center: true,
     },
   },
+  variants: {
+    borderWidth: ['responsive', 'hover', 'focus'],
+  },
   plugins: [],
 };

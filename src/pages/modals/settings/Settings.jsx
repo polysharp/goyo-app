@@ -3,8 +3,10 @@ import PropTypes from 'prop-types';
 import Modal from 'react-modal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import { ThemeButton } from '../../components';
-import { customStyle, Header, Body } from '../../components/modal';
+import { ThemeButton } from '../../../components';
+import { customStyle, Header, Body } from '../../../components/modal';
+
+import { Languages, Currencies, Theme } from './components';
 
 Modal.setAppElement(document.getElementById('root'));
 
@@ -30,12 +32,9 @@ const SettingsModal = ({ isOpen, setOpen }) => {
         </div>
       </Header>
       <Body>
-        <div className="h-64">I am a modal</div>
-        <div className="h-64">I am a modal</div>
-        <div className="h-64">I am a modal</div>
-        <div className="h-screen">I am a modal</div>
-        <div className="h-screen">I am a modal</div>
-        <div>I am a modal</div>
+        <Currencies />
+        <Languages />
+        <Theme />
       </Body>
     </Modal>
   );

@@ -1,3 +1,3 @@
-import SettingsModal from './Settings';
+import SettingsModal from './settings/Settings';
 
 export default SettingsModal;

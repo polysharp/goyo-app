@@ -107,7 +107,7 @@ const Nav = () => {
             key={link.id}
             as={NavLink}
             to={link.to}
-            className={`transition-all duration-200 ease-out `}
+            className="transition-all duration-200 ease-out"
             selected={selected === index}
             onClick={() => setSelected(index)}
           >

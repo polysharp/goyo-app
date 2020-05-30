@@ -20,6 +20,9 @@ const ThemeManagerProvider = ({ children }) => {
 
     if (themeFromLocalStorage) {
       setTheme(themeFromLocalStorage);
+    } else {
+      localStorage.setItem('user_theme', 'gray');
+      setTheme('gray');
     }
   }, []);
 

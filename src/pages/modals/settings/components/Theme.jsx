@@ -38,13 +38,8 @@ const Theme = () => {
       <h2 className="pb-4 text-xl font-semibold">Theme</h2>
       <div className="grid grid-cols-3 gap-2">
         {schemesName.map((color) => (
-          <div className="flex flex-col items-center">
-            <SchemeButton
-              key={color}
-              color={color}
-              selected={color === theme}
-              setTheme={setTheme}
-            />
+          <div className="flex flex-col items-center" key={color}>
+            <SchemeButton color={color} selected={color === theme} setTheme={setTheme} />
             <span>{color}</span>
           </div>
         ))}

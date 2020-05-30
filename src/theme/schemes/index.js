@@ -2,7 +2,7 @@ import gray from './gray';
 import teal from './teal';
 import indigo from './indigo';
 
-const getSchemeNames = ['gray', 'teal', 'indigo'];
+const schemesName = ['gray', 'teal', 'indigo'];
 
 const getSchemeWithName = (name) => {
   switch (name) {
@@ -17,4 +17,4 @@ const getSchemeWithName = (name) => {
   }
 };
 
-export { getSchemeNames, getSchemeWithName };
+export { schemesName, getSchemeWithName };

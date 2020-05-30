@@ -8,14 +8,21 @@ const customStyle = {
     backgroundColor: 'rgba(34, 34, 34, .6)',
   },
   content: {
-    border: 'none',
     top: '50%',
     left: '50%',
     right: 'auto',
     bottom: 'auto',
     margin: 'auto',
     transform: 'translate(-50%, -50%)',
+    borderRadius: '0.5rem',
+    border: 'none',
+    boxShadow: 'rgba(0, 0, 0, 0.28) 0px 8px 28px',
     padding: 0,
+    maxHeight: '90%',
+    maxWidth: '1032px',
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'column',
   },
 };
 

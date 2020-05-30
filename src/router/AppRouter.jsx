@@ -15,8 +15,7 @@ import SettingsModal from '../pages/modals';
 
 const AppRouter = () => {
   const { user } = useStore();
-
-  const [profileModalOpen, setProfileModalOpen] = useState(true);
+  const [profileModalOpen, setProfileModalOpen] = useState(false);
 
   useQuery(USER.ME_QUERY, {
     onCompleted: (data) => user.populate(data),

@@ -2,9 +2,12 @@
 
 @tailwind components;
 
+@import url('https://fonts.googleapis.com/css2?family=Muli:wght@300;500;600;700;800;900&display=swap');
+
 html {
   @apply antialiased;
   text-rendering: optimizeLegibility;
+  font-family: 'Muli', sans-serif;
 }
 
 @tailwind utilities;

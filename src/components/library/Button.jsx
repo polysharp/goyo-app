@@ -47,9 +47,27 @@ const Link = styled.button`
         `}
 `;
 
-const IconButton = styled.button`
+const ThemeButton = styled.button`
   ${tw`w-10 h-10 p-2 my-1 rounded-lg focus:outline-none focus:shadow-outline`}
 
+  ${({ theme, color }) =>
+    color
+      ? css`
+          color: ${theme[color]};
+        `
+      : tw`text-white`};
+
+  &:hover,
+  &:focus {
+    ${tw`shadow-outline outline-none`}
+
+    ${({ theme }) => css`
+      color: ${theme['500']};
+    `};
+  }
+`;
+
+const IconButton = styled(ThemeButton)`
   ${({ selected, theme }) =>
     selected
       ? css`
@@ -64,4 +82,4 @@ const IconButton = styled.button`
         `};
 `;
 
-export { Button, Link, IconButton };
+export { Button, Link, IconButton, ThemeButton };

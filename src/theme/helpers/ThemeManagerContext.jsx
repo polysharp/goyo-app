@@ -3,16 +3,12 @@ import PropTypes from 'prop-types';
 
 const ThemeManagerContext = createContext({
   theme: '',
-  setTheme: () => undefined,
+  // eslint-disable-next-line no-unused-vars
+  setTheme: (name) => undefined,
 });
 
 const ThemeManagerProvider = ({ children }) => {
   const [theme, _setTheme] = useState('');
-
-  // const toggleTheme = () => {
-  //   localStorage.setItem('user_theme_dark', JSON.stringify(!isDark));
-  //   setIsDark(!isDark);
-  // };
 
   const setTheme = (name) => {
     localStorage.setItem('user_theme', name);

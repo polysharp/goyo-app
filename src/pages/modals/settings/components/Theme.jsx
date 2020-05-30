@@ -40,7 +40,7 @@ const Theme = () => {
         {schemesName.map((color) => (
           <div className="flex flex-col items-center" key={color}>
             <SchemeButton color={color} selected={color === theme} setTheme={setTheme} />
-            <span>{color}</span>
+            <span className="pt-1 text-sm uppercase">{color}</span>
           </div>
         ))}
       </div>

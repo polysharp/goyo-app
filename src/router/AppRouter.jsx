@@ -11,7 +11,7 @@ import Redirector from './Redirector';
 import { Layout, Menu } from '../components';
 
 import { Dashboard, Renters, Properties, Activites, Statistics } from '../pages';
-import Profile from '../pages/modals';
+import SettingsModal from '../pages/modals';
 
 const AppRouter = () => {
   const { user } = useStore();
@@ -33,7 +33,7 @@ const AppRouter = () => {
         <Route exact path="/statistics" component={Statistics} />
         <Redirector isAuthenticated />
       </Switch>
-      <Profile isOpen={profileModalOpen} setOpen={setProfileModalOpen} />
+      <SettingsModal isOpen={profileModalOpen} setOpen={setProfileModalOpen} />
     </Layout>
   );
 };

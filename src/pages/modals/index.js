@@ -1,3 +1,3 @@
-import Profile from './Profile';
+import SettingsModal from './Settings';
 
-export default Profile;
+export default SettingsModal;

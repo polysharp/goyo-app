@@ -1,3 +1,3 @@
-const localStorageContainsKey = (key) => localStorage.get(key) !== null;
+const localStorageContainsKey = (key) => localStorage.getItem(key) !== null;
 
 export default localStorageContainsKey;

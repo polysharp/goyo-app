@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 
-import StoreContext from '../components';
+import { StoreContext } from '../components';
 
 /**
  * Return a React Context to access mobx store properties and methods.

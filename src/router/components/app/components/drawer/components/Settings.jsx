@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import { IconButton } from '../library';
+import { IconButton } from 'components';
 
 const Settings = ({ openProfileModal }) => (
   <div className="flex flex-col items-center justify-between w-full mb-2">

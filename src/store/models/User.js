@@ -1,7 +1,7 @@
 /* eslint-disable no-param-reassign */
 import { types } from 'mobx-state-tree';
 
-const User = types
+const user = types
   .model('User', {
     signed: false,
     email: '',
@@ -19,4 +19,4 @@ const User = types
     },
   }));
 
-export default User;
+export default user;

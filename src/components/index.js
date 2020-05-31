@@ -1,9 +1,6 @@
 import GlobalStyle from './GlobalStyle';
 
-import modalCustomStyle from './modal/modal-custom-style';
-import ModalHeader from './modal/ModalHeader';
-import ModalBody from './modal/ModalBody';
-import ModalFooter from './modal/ModalFooter';
+import { Modal, ModalHeader, ModalBody, ModalFooter } from './modal';
 
 import Heading from './Heading';
 
@@ -13,7 +10,7 @@ import Input from './Input';
 
 export { GlobalStyle };
 
-export { modalCustomStyle, ModalHeader, ModalBody, ModalFooter };
+export { Modal, ModalHeader, ModalBody, ModalFooter };
 
 export { Heading };
 

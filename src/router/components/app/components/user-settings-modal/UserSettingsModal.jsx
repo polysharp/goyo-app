@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Modal from 'react-modal';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import { modalCustomStyle, ModalHeader, ModalBody } from '__styled';
+import { modalCustomStyle, ModalHeader, ModalBody } from 'components';
 import { Languages, Currencies, Theme } from './components';
 
 Modal.setAppElement(document.getElementById('root'));

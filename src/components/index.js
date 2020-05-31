@@ -1,24 +1,19 @@
-import Menu from './menu/Menu';
-import Layout from './Layout';
-import Board from './Board';
+import GlobalStyle from './GlobalStyle';
 
-import Divider from './Divider';
-import Error from './Error';
+import { Modal, ModalHeader, ModalBody, ModalFooter } from './modal';
 
-import { Form, Header, Heading, Input, Button, Link, IconButton, ThemeButton } from './library';
+import Heading from './Heading';
 
-export {
-  Layout,
-  Menu,
-  Board,
-  Divider,
-  Error,
-  Form,
-  Header,
-  Heading,
-  Input,
-  Button,
-  Link,
-  IconButton,
-  ThemeButton,
-};
+import { Button, Link, IconButton, ThemeButton } from './button/Button';
+
+import Input from './Input';
+
+export { GlobalStyle };
+
+export { Modal, ModalHeader, ModalBody, ModalFooter };
+
+export { Heading };
+
+export { Button, Link, IconButton, ThemeButton };
+
+export { Input };

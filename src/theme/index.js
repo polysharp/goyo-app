@@ -1,5 +1,5 @@
-import { ThemeManagerContext, ThemeManagerProvider, StyledThemeProvider } from './helpers';
-import GlobalStyle from './constants';
-import { schemesName } from './schemes';
+import { ThemeContextProvider, ThemeProvider } from './components';
+import useTheme from './hooks';
+import { themeNames, themeWithName } from './utils';
 
-export { ThemeManagerContext, ThemeManagerProvider, StyledThemeProvider, GlobalStyle, schemesName };
+export { ThemeContextProvider, ThemeProvider, useTheme, themeNames, themeWithName };

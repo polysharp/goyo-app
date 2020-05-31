@@ -1,10 +1,11 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import { SignIn, SignUp } from '../pages';
-import Redirector from './Redirector';
+import { SignIn, SignUp } from 'pages/auth';
 
-const AppRouter = () => (
+import Redirector from '../shared';
+
+const Auth = () => (
   <Switch>
     <Route path="/auth/signin" component={SignIn} />
     <Route path="/auth/signup" component={SignUp} />
@@ -12,4 +13,4 @@ const AppRouter = () => (
   </Switch>
 );
 
-export default AppRouter;
+export default Auth;

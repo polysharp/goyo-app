@@ -2,12 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { observer } from 'mobx-react';
 
-import { useStore } from '../store';
+import { useStore } from 'store';
+import { localStorageContainsKey } from 'utils';
 
-const AuthRouter = React.lazy(() => import('./AuthRouter'));
-const AppRouter = React.lazy(() => import('./AppRouter'));
-
-const checkAccessToken = () => localStorage.getItem('user') !== null;
+const AuthRouter = React.lazy(() => import('./components/auth/Auth'));
+const AppRouter = React.lazy(() => import('./components/app/App'));
 
 const Router = () => {
   const [init, setInit] = useState(false);
@@ -17,11 +16,11 @@ const Router = () => {
   } = useStore();
 
   useEffect(() => {
-    if (checkAccessToken()) sign();
+    if (localStorageContainsKey('user')) sign();
     else unsign();
 
     const onFocus = () => {
-      if (checkAccessToken()) sign();
+      if (localStorageContainsKey('user')) sign();
       else unsign();
     };
 

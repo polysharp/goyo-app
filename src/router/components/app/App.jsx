@@ -4,26 +4,26 @@ import { Route, Switch } from 'react-router-dom';
 import { observer } from 'mobx-react';
 import { useQuery } from '@apollo/react-hooks';
 
-import { USER } from '../graphql';
-import { useStore } from '../store';
+import { ME } from 'gql/user';
+import { useStore } from 'store';
 
-import Redirector from './Redirector';
-import { Layout, Menu } from '../components';
+import { Dashboard, Renters, Properties, Activites, Statistics } from 'pages/app';
 
-import { Dashboard, Renters, Properties, Activites, Statistics } from '../pages';
-import SettingsModal from '../pages/modals';
+import Redirector from '../shared';
+import { Layout, Drawer, UserSettingsModal } from './components';
 
-const AppRouter = () => {
+const App = () => {
   const { user } = useStore();
-  const [profileModalOpen, setProfileModalOpen] = useState(false);
 
-  useQuery(USER.ME_QUERY, {
+  useQuery(ME, {
     onCompleted: (data) => user.populate(data),
   });
 
+  const [profileModalOpen, setProfileModalOpen] = useState(false);
+
   return (
     <Layout>
-      <Menu openProfileModal={setProfileModalOpen} />
+      <Drawer openProfileModal={setProfileModalOpen} />
       <Switch>
         <Route exact path="/" component={Dashboard} />
         <Route exact path="/renters" component={Renters} />
@@ -32,9 +32,9 @@ const AppRouter = () => {
         <Route exact path="/statistics" component={Statistics} />
         <Redirector isAuthenticated />
       </Switch>
-      <SettingsModal isOpen={profileModalOpen} setOpen={setProfileModalOpen} />
+      <UserSettingsModal isOpen={profileModalOpen} setOpen={setProfileModalOpen} />
     </Layout>
   );
 };
 
-export default observer(AppRouter);
+export default observer(App);

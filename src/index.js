@@ -3,29 +3,29 @@ import ReactDOM from 'react-dom';
 
 import 'mobx-react/batchingForReactDom';
 import { ApolloProvider } from '@apollo/react-hooks';
-// import { ThemeProvider } from 'styled-components';
 
-import { StoreProvider } from './store';
-import { apolloClient } from './graphql';
-import { ThemeManagerProvider, StyledThemeProvider, GlobalStyle } from './theme';
+import { StoreContextProvider } from 'store';
+import client from 'gql/client';
+import { ThemeContextProvider, ThemeProvider } from 'theme';
 
-import './locales/i18n';
-import './theme/font-awesome';
-import './styles/tailwind.generated.css';
+import 'translation/i18n';
+import 'styles/font-awesome';
+import 'styles/tailwind.generated.css';
 
+import { GlobalStyle } from 'components';
 import Router from './router/Router';
 
 ReactDOM.render(
   <React.StrictMode>
-    <ApolloProvider client={apolloClient}>
-      <StoreProvider>
-        <ThemeManagerProvider>
-          <StyledThemeProvider>
+    <ApolloProvider client={client}>
+      <StoreContextProvider>
+        <ThemeContextProvider>
+          <ThemeProvider>
             <GlobalStyle />
             <Router />
-          </StyledThemeProvider>
-        </ThemeManagerProvider>
-      </StoreProvider>
+          </ThemeProvider>
+        </ThemeContextProvider>
+      </StoreContextProvider>
     </ApolloProvider>
   </React.StrictMode>,
   document.getElementById('root')

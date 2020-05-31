@@ -5,10 +5,11 @@ import { Formik } from 'formik';
 import * as Yup from 'yup';
 import ReCAPTCHA from 'react-google-recaptcha';
 
-import { useStore } from '../../store';
-import { USER } from '../../graphql';
+import { useStore } from 'store';
+import { SIGN_IN } from 'gql/user';
 
-import { Divider, Error, Form, Heading, Input, Button, Link } from '../../components';
+import { Heading, Input, Button, Link } from 'components';
+import { Divider, Error, Form } from '../shared';
 
 const SignInSchema = Yup.object().shape({
   email: Yup.string()
@@ -28,7 +29,7 @@ const SignInPage = () => {
   const store = useStore();
   const recaptchaRef = React.createRef();
 
-  const [auth, { loading }] = useMutation(USER.SIGN_IN_MUTATION, {
+  const [auth, { loading }] = useMutation(SIGN_IN, {
     onCompleted: () => store.user.sign(),
     onError: (error) => console.log(error),
   });

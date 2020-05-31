@@ -1,13 +1,9 @@
-import React, { createContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
-const ThemeManagerContext = createContext({
-  theme: '',
-  // eslint-disable-next-line no-unused-vars
-  setTheme: (name) => undefined,
-});
+import ThemeContext from './ThemeContext';
 
-const ThemeManagerProvider = ({ children }) => {
+const ThemeContextProvider = ({ children }) => {
   const [theme, _setTheme] = useState('');
 
   const setTheme = (name) => {
@@ -27,19 +23,19 @@ const ThemeManagerProvider = ({ children }) => {
   }, []);
 
   return (
-    <ThemeManagerContext.Provider
+    <ThemeContext.Provider
       value={{
         theme,
         setTheme,
       }}
     >
       {children}
-    </ThemeManagerContext.Provider>
+    </ThemeContext.Provider>
   );
 };
 
-ThemeManagerProvider.propTypes = {
+ThemeContextProvider.propTypes = {
   children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]).isRequired,
 };
 
-export { ThemeManagerContext, ThemeManagerProvider };
+export default ThemeContextProvider;

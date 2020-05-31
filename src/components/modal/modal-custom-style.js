@@ -1,4 +1,4 @@
-const customStyle = {
+const modalCustomStyle = {
   overlay: {
     position: 'fixed',
     top: 0,
@@ -26,4 +26,4 @@ const customStyle = {
   },
 };
 
-export default customStyle;
+export default modalCustomStyle;

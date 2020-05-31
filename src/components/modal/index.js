@@ -1,6 +1,6 @@
-import customStyle from './customStyle';
-import Header from './Header';
-import Body from './Body';
-import Footer from './Footer';
+import modalCustomStyle from './modal-custom-style';
+import ModalHeader from './ModalHeader';
+import ModalBody from './ModalBody';
+import ModalFooter from './ModalFooter';
 
-export { customStyle, Header, Body, Footer };
+export { modalCustomStyle, ModalHeader, ModalBody, ModalFooter };

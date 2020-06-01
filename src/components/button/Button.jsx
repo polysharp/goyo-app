@@ -1,6 +1,10 @@
 import styled, { css } from 'styled-components';
 import tw from 'tailwind.macro';
 
+// TODO:Shared style for button
+// TODO:Shared style for h1, h2 ...
+// TODO:Shared style for theme
+
 const Button = styled.button`
   ${tw`w-full px-4 py-2 font-semibold text-white border border-transparent rounded-md`}
 

@@ -1,14 +1,14 @@
 import { toast as reactToast } from 'react-toastify';
 
 const toasts = {
-  success: (label) => {
-    reactToast.success(label);
+  success: (label, options = {}) => {
+    reactToast.success(label, { ...options });
   },
-  warning: (label) => {
-    reactToast.warn(label);
+  warning: (label, options = {}) => {
+    reactToast.warn(label, { ...options });
   },
-  info: (label) => {
-    reactToast.info(label);
+  info: (label, options = {}) => {
+    reactToast.info(label, { ...options });
   },
 };
 

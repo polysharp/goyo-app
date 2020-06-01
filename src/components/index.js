@@ -2,7 +2,7 @@ import GlobalStyle from './GlobalStyle';
 
 import { Modal, ModalHeader, ModalBody, ModalFooter } from './modal';
 
-import { ToastContainer } from './toast';
+import { ToastContainer, toasts } from './toast';
 
 import Heading from './Heading';
 
@@ -14,7 +14,7 @@ export { GlobalStyle };
 
 export { Modal, ModalHeader, ModalBody, ModalFooter };
 
-export { ToastContainer };
+export { ToastContainer, toasts };
 
 export { Heading };
 

@@ -4,6 +4,7 @@ import { observer } from 'mobx-react';
 
 import { useStore } from 'store';
 import { localStorageContainsKey } from 'utils';
+import { ToastContainer } from 'components';
 
 const AuthRouter = React.lazy(() => import('./components/auth/Auth'));
 const AppRouter = React.lazy(() => import('./components/app/App'));
@@ -49,6 +50,7 @@ const Router = () => {
           <AuthRouter />
         </React.Suspense>
       )}
+      <ToastContainer />
     </BrowserRouter>
   );
 };

@@ -1,0 +1,42 @@
+/** Classes for the displayed toast **/
+.Toastify__toast {
+  background-color: aqua;
+}
+.Toastify__toast--info {
+  color: #3c3ce5;
+  background-color: #ededff;
+  border: 1px solid #c4c4ff;
+  border-radius: 5px;
+}
+.Toastify__toast--success {
+  color: #26cb7c;
+  background-color: #e2fff1;
+  border: 1px solid #95f5c7;
+  border-radius: 5px;
+}
+.Toastify__toast--warning {
+  color: #f77d05;
+  background-color: #fef0e2;
+  border: 1px solid #ffbf81;
+  border-radius: 5px;
+}
+.Toastify__toast--error {
+}
+
+/** Classes for the close button. Better use your own closeButton **/
+.Toastify__close-button:focus {
+  outline: none;
+}
+
+.Toastify__close-button.Toastify__close-button--info {
+  color: #3c3ce5;
+  align-self: center;
+}
+.Toastify__close-button.Toastify__close-button--success {
+  color: #26cb7c;
+  align-self: center;
+}
+.Toastify__close-button.Toastify__close-button--warning {
+  color: #f77d05;
+  align-self: center;
+}

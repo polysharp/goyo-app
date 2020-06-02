@@ -1,4 +1,7 @@
-const gray = {
+import global from '../shared';
+
+const theme = {
+  global: { ...global },
   '100': '#f7fafc',
   '200': '#edf2f7',
   '300': '#e2e8f0',
@@ -10,4 +13,4 @@ const gray = {
   '900': '#1a202c',
 };
 
-export default gray;
+export default theme;

@@ -1,4 +1,7 @@
-const blue = {
+import global from '../shared';
+
+const theme = {
+  global: { ...global },
   '100': '#ebf8ff',
   '200': '#bee3f8',
   '300': '#90cdf4',
@@ -10,4 +13,4 @@ const blue = {
   '900': '#2a4365',
 };
 
-export default blue;
+export default theme;

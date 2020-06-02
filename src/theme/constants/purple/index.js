@@ -1,4 +1,7 @@
-const purple = {
+import global from '../shared';
+
+const theme = {
+  global: { ...global },
   '100': '#faf5ff',
   '200': '#e9d8fd',
   '300': '#d6bcfa',
@@ -10,4 +13,4 @@ const purple = {
   '900': '#44337a',
 };
 
-export default purple;
+export default theme;

@@ -1,4 +1,7 @@
-const indigo = {
+import global from '../shared';
+
+const theme = {
+  global: { ...global },
   '100': '#ebf4ff',
   '200': '#c3dafe',
   '300': '#a3bffa',
@@ -10,4 +13,4 @@ const indigo = {
   '900': '#3c366b',
 };
 
-export default indigo;
+export default theme;

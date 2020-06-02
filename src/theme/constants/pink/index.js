@@ -1,4 +1,7 @@
-const pink = {
+import global from '../shared';
+
+const theme = {
+  global: { ...global },
   '100': '#fff5f7',
   '200': '#fed7e2',
   '300': '#fbb6ce',
@@ -10,4 +13,4 @@ const pink = {
   '900': '#702459',
 };
 
-export default pink;
+export default theme;

@@ -1,4 +1,7 @@
-const teal = {
+import global from '../shared';
+
+const theme = {
+  global: { ...global },
   '100': '#e6fffa',
   '200': '#b2f5ea',
   '300': '#81e6d9',
@@ -10,4 +13,4 @@ const teal = {
   '900': '#234e52',
 };
 
-export default teal;
+export default theme;

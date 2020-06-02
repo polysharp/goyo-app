@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 
 import { EaseIn } from 'components';
@@ -88,8 +88,8 @@ const links = [
   },
 ];
 
-const getActiveLink = (location) => {
-  const current = links.filter((link) => link.to === location.pathname);
+const getActiveLink = (pathname) => {
+  const current = links.filter((link) => link.to === pathname);
   if (current[0]) return current[0].id;
   return 0;
 };
@@ -97,6 +97,10 @@ const getActiveLink = (location) => {
 const Sidebar = () => {
   const location = useLocation();
   const [selected, setSelected] = useState(getActiveLink(location));
+
+  useEffect(() => {
+    setSelected(getActiveLink(location.pathname));
+  }, [location.pathname]);
 
   return (
     <div className="fixed inset-y-0 left-0 bg-white border-r mt-15 w-15 pt-15">

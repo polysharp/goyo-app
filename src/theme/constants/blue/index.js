@@ -1,7 +1,9 @@
 import global from '../shared';
+import nav from './nav';
 
 const theme = {
   global: { ...global },
+  nav: { ...nav },
   '100': '#ebf8ff',
   '200': '#bee3f8',
   '300': '#90cdf4',
@@ -11,6 +13,7 @@ const theme = {
   '700': '#2b6cb0',
   '800': '#2c5282',
   '900': '#2a4365',
+  outline: '#4299e1',
 };
 
 export default theme;

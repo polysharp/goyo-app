@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import { EaseIn } from 'components';
+import { EaseIn, ThemedButton } from 'components';
 
 const Topbar = ({ openUserProfileModal }) => (
   <div className="fixed inset-x-0 top-0 bg-white border-b h-15">
@@ -11,7 +11,7 @@ const Topbar = ({ openUserProfileModal }) => (
         className="flex flex-col items-center justify-center border-r w-15"
         style={{ padding: '10px' }}
       >
-        <NavLink to="/" className="w-full h-full text-gray-300 hover:text-black">
+        <ThemedButton.Nav as={NavLink} to="/" className="w-full h-full">
           <EaseIn>
             <svg viewBox="0 0 24 24" fill="currentColor">
               <path
@@ -21,11 +21,12 @@ const Topbar = ({ openUserProfileModal }) => (
               />
             </svg>
           </EaseIn>
-        </NavLink>
+        </ThemedButton.Nav>
       </div>
       <div className="flex flex-row items-center justify-end flex-grow h-full mr-2">
         <div className="flex flex-col items-center justify-center w-15">
-          <button
+          <ThemedButton.Nav
+            as="button"
             type="button"
             className="w-full h-full p-4 text-gray-300 hover:text-black"
             onClick={() => openUserProfileModal(true)}
@@ -38,10 +39,14 @@ const Topbar = ({ openUserProfileModal }) => (
                 />
               </svg>
             </EaseIn>
-          </button>
+          </ThemedButton.Nav>
         </div>
         <div className="flex flex-col items-center justify-center h-full">
-          <button type="button" className="w-full h-full p-2 text-gray-300 hover:text-black">
+          <ThemedButton.Nav
+            as="button"
+            type="button"
+            className="w-full h-full p-2 text-gray-300 hover:text-black"
+          >
             <div className="flex flex-row items-center justify-between">
               <img
                 src="https://api.adorable.io/avatars/280"
@@ -61,7 +66,7 @@ const Topbar = ({ openUserProfileModal }) => (
                 </svg>
               </EaseIn>
             </div>
-          </button>
+          </ThemedButton.Nav>
         </div>
       </div>
     </div>

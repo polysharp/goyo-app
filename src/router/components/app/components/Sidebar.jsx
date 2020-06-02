@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 
-import { EaseIn } from 'components';
+import { EaseIn, ThemedButton, Carret } from 'components';
 
 // TODO: Use theme color for the translate span & link hover focus
 
@@ -96,10 +96,10 @@ const getActiveLink = (pathname) => {
 
 const Sidebar = () => {
   const location = useLocation();
-  const [selected, setSelected] = useState(getActiveLink(location));
+  const [active, setActive] = useState(getActiveLink(location));
 
   useEffect(() => {
-    setSelected(getActiveLink(location.pathname));
+    setActive(getActiveLink(location.pathname));
   }, [location.pathname]);
 
   return (
@@ -109,33 +109,31 @@ const Sidebar = () => {
           <div
             className="absolute inset-x-0 transition-transform duration-200 ease-in"
             style={{
-              transform: `translateY(calc(100% * ${selected} + 6px * ${selected}))`,
+              transform: `translateY(calc(100% * ${active} + 6px * ${active}))`,
               margin: '6px',
               padding: '2px',
             }}
           >
-            <span className="block h-full bg-gray-800 rounded shadow" style={{ height: '43px' }} />
+            <Carret />
           </div>
           <nav className="relative">
             {links.map((link, index) => (
-              <NavLink
+              <ThemedButton.Nav
+                as={NavLink}
                 key={link.id}
                 to={link.to}
-                className={`flex flex-col items-center justify-center p-3 ${
-                  selected === index
-                    ? 'text-white hover:text-gray-300'
-                    : 'text-gray-300 hover:text-black'
-                }`}
+                className="flex flex-col items-center justify-center p-3"
                 style={{ margin: '6px' }}
-                onClick={() => setSelected(index)}
+                onClick={() => setActive(index)}
+                selected={active === index}
               >
                 <EaseIn>{link.icon}</EaseIn>
-              </NavLink>
+              </ThemedButton.Nav>
             ))}
           </nav>
         </div>
         <div className="flex flex-col items-center justify-center w-15 h-15">
-          <button type="button" className="w-full h-full p-4 text-gray-300 hover:text-black">
+          <ThemedButton.Nav as="button" type="button" className="w-full h-full p-4">
             <EaseIn>
               <svg viewBox="0 0 24 24" fill="currentColor" className="transform rotate-90">
                 <path
@@ -144,7 +142,7 @@ const Sidebar = () => {
                 />
               </svg>
             </EaseIn>
-          </button>
+          </ThemedButton.Nav>
         </div>
       </div>
     </div>

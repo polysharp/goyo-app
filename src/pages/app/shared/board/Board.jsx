@@ -3,11 +3,12 @@ import PropTypes from 'prop-types';
 
 const Board = ({ children }) => (
   <div
-    className="relative min-h-screen bg-gray-200 shadow-lg"
     style={{
-      width: 'calc(100% - 70px)',
-      marginLeft: '70px',
-      borderTopLeftRadius: '1.5rem',
+      width: 'calc(100% - 60px)',
+      height: 'calc(100% - 60px)',
+      marginLeft: '60px',
+      marginTop: '60px',
+      padding: '5px',
     }}
   >
     {children}

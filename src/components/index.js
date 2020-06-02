@@ -1,4 +1,7 @@
 import GlobalStyle from './GlobalStyle';
+import EaseIn from './EaseIn';
+
+// TODO: Rework
 
 import { Modal, ModalHeader, ModalBody, ModalFooter } from './modal';
 
@@ -10,7 +13,9 @@ import { Button, Link, IconButton, ThemeButton } from './button/Button';
 
 import Input from './Input';
 
-export { GlobalStyle };
+export { GlobalStyle, EaseIn };
+
+// TODO: Rework
 
 export { Modal, ModalHeader, ModalBody, ModalFooter };
 

@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 
-import { IconButton } from 'components';
+import { EaseIn, ThemedButton, Carret } from 'components';
+
+// TODO: Use theme color for the translate span & link hover focus
 
 const links = [
   {
@@ -86,37 +88,65 @@ const links = [
   },
 ];
 
-const Nav = () => {
+const getActiveLink = (pathname) => {
+  const current = links.filter((link) => link.to === pathname);
+  if (current[0]) return current[0].id;
+  return 0;
+};
+
+const Sidebar = () => {
   const location = useLocation();
-  const [selected, setSelected] = useState(0);
+  const [active, setActive] = useState(getActiveLink(location));
 
   useEffect(() => {
-    const current = links.filter((link) => link.to === location.pathname);
-    if (current[0]) setSelected(current[0].id);
+    setActive(getActiveLink(location.pathname));
   }, [location.pathname]);
 
   return (
-    <div className="relative flex-grow">
-      <span
-        className="absolute w-10 h-10 my-1 transition-transform duration-300 ease-out bg-white rounded-lg shadow"
-        style={{ transform: `translateY(calc(100% * ${selected} + 8px * ${selected}))` }}
-      />
-      <nav className="relative flex flex-col items-center">
-        {links.map((link, index) => (
-          <IconButton
-            key={link.id}
-            as={NavLink}
-            to={link.to}
-            className="transition-all duration-200 ease-out"
-            selected={selected === index}
-            onClick={() => setSelected(index)}
+    <div className="fixed inset-y-0 left-0 bg-white border-r mt-15 w-15 pt-15">
+      <div className="flex flex-col items-center justify-between w-full h-full">
+        <div className="relative flex-grow w-full">
+          <div
+            className="absolute inset-x-0 transition-transform duration-200 ease-in"
+            style={{
+              transform: `translateY(calc(100% * ${active} + 6px * ${active}))`,
+              margin: '6px',
+              padding: '2px',
+            }}
           >
-            {link.icon}
-          </IconButton>
-        ))}
-      </nav>
+            <Carret />
+          </div>
+          <nav className="relative">
+            {links.map((link, index) => (
+              <ThemedButton.Nav
+                as={NavLink}
+                key={link.id}
+                to={link.to}
+                className="flex flex-col items-center justify-center p-3"
+                style={{ margin: '6px' }}
+                onClick={() => setActive(index)}
+                selected={active === index}
+              >
+                <EaseIn>{link.icon}</EaseIn>
+              </ThemedButton.Nav>
+            ))}
+          </nav>
+        </div>
+        <div className="flex flex-col items-center justify-center w-15 h-15">
+          <ThemedButton.Nav as="button" type="button" className="w-full h-full p-4">
+            <EaseIn>
+              <svg viewBox="0 0 24 24" fill="currentColor" className="transform rotate-90">
+                <path
+                  fillRule="evenodd"
+                  d="M13 5.41V17a1 1 0 0 1-2 0V5.41l-3.3 3.3a1 1 0 0 1-1.4-1.42l5-5a1 1 0 0 1 1.4 0l5 5a1 1 0 1 1-1.4 1.42L13 5.4zM3 17a1 1 0 0 1 2 0v3h14v-3a1 1 0 0 1 2 0v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-3z"
+                />
+              </svg>
+            </EaseIn>
+          </ThemedButton.Nav>
+        </div>
+      </div>
     </div>
   );
 };
 
-export default Nav;
+export default Sidebar;

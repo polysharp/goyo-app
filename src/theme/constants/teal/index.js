@@ -1,4 +1,9 @@
-const teal = {
+import global from '../shared';
+import nav from './nav';
+
+const theme = {
+  global: { ...global },
+  nav: { ...nav },
   '100': '#e6fffa',
   '200': '#b2f5ea',
   '300': '#81e6d9',
@@ -8,6 +13,7 @@ const teal = {
   '700': '#2c7a7b',
   '800': '#285e61',
   '900': '#234e52',
+  outline: '#38b2ac',
 };
 
-export default teal;
+export default theme;

@@ -10,7 +10,7 @@ import { useStore } from 'store';
 import { Dashboard, Renters, Properties, Activites, Statistics } from 'pages/app';
 
 import Redirector from '../shared';
-import { Layout, Drawer, UserSettingsModal } from './components';
+import { Layout, Topbar, Sidebar, UserSettingsModal } from './components';
 
 const App = () => {
   const { user } = useStore();
@@ -19,11 +19,12 @@ const App = () => {
     onCompleted: (data) => user.populate(data),
   });
 
-  const [profileModalOpen, setProfileModalOpen] = useState(false);
+  const [userProfileModalOpen, setUserProfileModalOpen] = useState(false);
 
   return (
     <Layout>
-      <Drawer openProfileModal={setProfileModalOpen} />
+      <Topbar openUserProfileModal={setUserProfileModalOpen} />
+      <Sidebar />
       <Switch>
         <Route exact path="/" component={Dashboard} />
         <Route exact path="/renters" component={Renters} />
@@ -32,7 +33,7 @@ const App = () => {
         <Route exact path="/statistics" component={Statistics} />
         <Redirector isAuthenticated />
       </Switch>
-      <UserSettingsModal isOpen={profileModalOpen} setOpen={setProfileModalOpen} />
+      <UserSettingsModal isOpen={userProfileModalOpen} setOpen={setUserProfileModalOpen} />
     </Layout>
   );
 };

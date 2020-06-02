@@ -14,7 +14,7 @@ const modalCustomStyle = {
     bottom: 'auto',
     margin: 'auto',
     transform: 'translate(-50%, -50%)',
-    borderRadius: '0.5rem',
+    borderRadius: '0.25rem',
     border: 'none',
     boxShadow: 'rgba(0, 0, 0, 0.28) 0px 8px 28px',
     padding: 0,

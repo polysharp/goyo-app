@@ -2,7 +2,10 @@ import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
   body {
-    background-color: ${({ theme }) => theme['900']};
+    background-color: ${({ theme }) => theme.global.body.bg};
+  }
+  :focus {
+    outline-color: ${({ theme }) => theme.outline} !important;
   }
 `;
 

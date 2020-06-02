@@ -1,4 +1,9 @@
-const indigo = {
+import global from '../shared';
+import nav from './nav';
+
+const theme = {
+  global: { ...global },
+  nav: { ...nav },
   '100': '#ebf4ff',
   '200': '#c3dafe',
   '300': '#a3bffa',
@@ -8,6 +13,7 @@ const indigo = {
   '700': '#4c51bf',
   '800': '#434190',
   '900': '#3c366b',
+  outline: '#667eea',
 };
 
-export default indigo;
+export default theme;

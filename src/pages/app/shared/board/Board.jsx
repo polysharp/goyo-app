@@ -2,16 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Board = ({ children }) => (
-  <div
-    style={{
-      width: 'calc(100% - 60px)',
-      height: 'calc(100% - 60px)',
-      marginLeft: '60px',
-      marginTop: '60px',
-      padding: '5px',
-    }}
-  >
-    {children}
+  <div className="w-screen h-screen" style={{ paddingTop: '60px', paddingLeft: '60px' }}>
+    <div className="w-full h-full overflow-y-auto">{children}</div>
   </div>
 );
 

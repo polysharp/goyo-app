@@ -28,14 +28,15 @@ const App = () => {
 
   const [notificationsDropdownOpen, setNotificationsDropdownOpen] = useState(false);
   const [settingsModalOpen, setSettingsModalOpen] = useState(false);
-  const [profileDropdownOpen, setProfileDropdownOpen] = useState(true);
+  const [profileDropdownOpen, setProfileDropdownOpen] = useState(false);
 
   return (
     <Layout>
       <Topbar
-        openProfileDropdown={setProfileDropdownOpen}
-        openSettingsModal={setSettingsModalOpen}
         openNotificationsDropdown={setNotificationsDropdownOpen}
+        openSettingsModal={setSettingsModalOpen}
+        openProfileDropdown={setProfileDropdownOpen}
+        profileDropdownOpen={profileDropdownOpen}
       />
       <Sidebar />
       <Switch>

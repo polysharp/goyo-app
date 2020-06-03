@@ -12,17 +12,15 @@ const AppRouter = React.lazy(() => import('./components/app/App'));
 const Router = () => {
   const [init, setInit] = useState(false);
 
-  const {
-    user: { signed, sign, unsign },
-  } = useStore();
+  const { user } = useStore();
 
   useEffect(() => {
-    if (localStorageContainsKey('user')) sign();
-    else unsign();
+    if (localStorageContainsKey('user')) user.sign();
+    else user.unsign();
 
     const onFocus = () => {
-      if (localStorageContainsKey('user')) sign();
-      else unsign();
+      if (localStorageContainsKey('user')) user.sign();
+      else user.unsign();
     };
 
     window.addEventListener('focus', onFocus);
@@ -35,13 +33,13 @@ const Router = () => {
       window.removeEventListener('focus', onFocus);
       window.removeEventListener('load', onFocus);
     };
-  }, [sign, unsign]);
+  }, [user.sign, user.unsign]);
 
   if (!init) return null;
 
   return (
     <BrowserRouter>
-      {signed ? (
+      {user.signed ? (
         <React.Suspense fallback={<div />}>
           <AppRouter />
         </React.Suspense>

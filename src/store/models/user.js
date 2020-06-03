@@ -12,6 +12,7 @@ const user = types
       self.signed = true;
     },
     unsign() {
+      localStorage.removeItem('user');
       self.signed = false;
     },
     populate(data) {

@@ -33,7 +33,7 @@ const Router = () => {
       window.removeEventListener('focus', onFocus);
       window.removeEventListener('load', onFocus);
     };
-  }, [user.sign, user.unsign]);
+  }, [user]);
 
   if (!init) return null;
 

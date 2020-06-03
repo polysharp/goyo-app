@@ -1,14 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import {
-  Dropdown,
-  DropdownHeader,
-  DropdownBody,
-  DropdownFooter,
-  ThemedButton,
-  EaseIn,
-} from 'components';
+import { Dropdown, DropdownHeader, DropdownBody, ThemedButton, EaseIn } from 'components';
 
 import profileDropdownCustomStyle from './profile-dropdown-custom-style';
 
@@ -19,14 +12,14 @@ const UserProfileDropdown = ({ isOpen, setOpen }) => {
 
   return (
     <Dropdown
-      title="Notifications"
+      title="Profile"
       isOpen={isOpen}
       onClose={onClose}
       customStyle={profileDropdownCustomStyle}
     >
       <DropdownHeader align="start">
         <div>
-          <h1 className="leading-tight">Paramètres</h1>
+          <h1 className="leading-tight">Profile</h1>
         </div>
         <div className="absolute" style={{ right: '4px' }}>
           <ThemedButton.Modal type="button" className="w-full h-full p-2" onClick={onClose}>
@@ -42,17 +35,22 @@ const UserProfileDropdown = ({ isOpen, setOpen }) => {
         </div>
       </DropdownHeader>
       <DropdownBody>
-        <div>
-          <span className="block py-4 text-center opacity-25">Pas de nouvelle, bonne nouvelle</span>
-        </div>
-      </DropdownBody>
-      <DropdownFooter>
-        <ThemedButton.Modal type="button" className="w-full h-full">
+        <ThemedButton.Dropdown type="button" className="w-full h-full px-3 py-2 text-left">
           <EaseIn>
-            <span>Tout marquer comme lu</span>
+            <span>Feedbacks</span>
           </EaseIn>
-        </ThemedButton.Modal>
-      </DropdownFooter>
+        </ThemedButton.Dropdown>
+        <ThemedButton.Dropdown type="button" className="w-full h-full px-3 py-2 text-left">
+          <EaseIn>
+            <span>Aide</span>
+          </EaseIn>
+        </ThemedButton.Dropdown>
+        <ThemedButton.Dropdown type="button" className="w-full h-full p-2 border-t">
+          <EaseIn>
+            <span>Déconnexion</span>
+          </EaseIn>
+        </ThemedButton.Dropdown>
+      </DropdownBody>
     </Dropdown>
   );
 };

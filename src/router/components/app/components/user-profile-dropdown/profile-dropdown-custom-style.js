@@ -10,7 +10,7 @@ const modalCustomStyle = {
   content: {
     position: 'fixed',
     top: '60px',
-    left: 'calc(100vw - 500px)',
+    left: 'calc(100vw - 352px)',
     right: 'unset',
     bottom: 'unset',
     margin: 'auto',

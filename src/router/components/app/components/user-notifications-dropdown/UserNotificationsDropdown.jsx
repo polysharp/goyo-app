@@ -29,7 +29,7 @@ const UserNotificationsDropdown = ({ isOpen, setOpen }) => {
           <h1 className="leading-tight">Paramètres</h1>
         </div>
         <div className="absolute" style={{ right: '4px' }}>
-          <ThemedButton.Modal type="button" className="w-full h-full p-2" onClick={onClose}>
+          <ThemedButton.Dropdown type="button" className="w-full h-full p-2" onClick={onClose}>
             <EaseIn>
               <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
                 <path
@@ -38,7 +38,7 @@ const UserNotificationsDropdown = ({ isOpen, setOpen }) => {
                 />
               </svg>
             </EaseIn>
-          </ThemedButton.Modal>
+          </ThemedButton.Dropdown>
         </div>
       </DropdownHeader>
       <DropdownBody>
@@ -47,11 +47,11 @@ const UserNotificationsDropdown = ({ isOpen, setOpen }) => {
         </div>
       </DropdownBody>
       <DropdownFooter>
-        <ThemedButton.Modal type="button" className="w-full h-full">
+        <ThemedButton.Dropdown type="button" className="w-full h-full">
           <EaseIn>
             <span>Tout marquer comme lu</span>
           </EaseIn>
-        </ThemedButton.Modal>
+        </ThemedButton.Dropdown>
       </DropdownFooter>
     </Dropdown>
   );

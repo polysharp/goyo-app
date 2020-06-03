@@ -1,7 +1,20 @@
 import styled, { css } from 'styled-components';
 
 const Modal = styled.button`
-  ${({ theme }) => {
+  ${({ theme, selected }) => {
+    if (selected) {
+      return css`
+        color: ${theme.modal.normal.color};
+        border-color: ${theme.modal.hover.color};
+        &:hover {
+          color: ${theme.modal.hover.color};
+        }
+        &:focus {
+          color: ${theme.modal.focus.color};
+        }
+      `;
+    }
+
     return css`
       color: ${theme.modal.normal.color};
       &:hover {

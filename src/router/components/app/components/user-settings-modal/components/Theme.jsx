@@ -1,33 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { useTheme } from 'theme';
 
-const ThemeButton = ({ color, selected, setTheme }) => (
-  <button
-    type="button"
-    onClick={() => setTheme(color)}
-    className={`relative w-full h-16 p-1 rounded-lg focus:outline-none focus:shadow-outline border border-transparent
-    ${selected ? 'border-gray-900' : 'hover:border-gray-900'}`}
-  >
-    <div className="grid h-full grid-cols-9 rounded-lg">
-      <div className={`h-full rounded-l-lg ${`bg-${color}-100`}`} />
-      <div className={`h-full ${`bg-${color}-200`}`} />
-      <div className={`h-full ${`bg-${color}-300`}`} />
-      <div className={`h-full ${`bg-${color}-400`}`} />
-      <div className={`h-full ${`bg-${color}-500`}`} />
-      <div className={`h-full ${`bg-${color}-600`}`} />
-      <div className={`h-full ${`bg-${color}-700`}`} />
-      <div className={`h-full ${`bg-${color}-800`}`} />
-      <div className={`h-full rounded-r-lg ${`bg-${color}-900`}`} />
-    </div>
-  </button>
+import { ThemedButton } from 'components';
+
+const Palette = ({ color }) => (
+  <div className="grid h-full grid-cols-9 rounded">
+    <div className={`h-full rounded-l ${`bg-${color}-100`}`} />
+    <div className={`h-full ${`bg-${color}-200`}`} />
+    <div className={`h-full ${`bg-${color}-300`}`} />
+    <div className={`h-full ${`bg-${color}-400`}`} />
+    <div className={`h-full ${`bg-${color}-500`}`} />
+    <div className={`h-full ${`bg-${color}-600`}`} />
+    <div className={`h-full ${`bg-${color}-700`}`} />
+    <div className={`h-full ${`bg-${color}-800`}`} />
+    <div className={`h-full rounded-r ${`bg-${color}-900`}`} />
+  </div>
 );
 
-ThemeButton.propTypes = {
+Palette.propTypes = {
   color: PropTypes.string.isRequired,
-  selected: PropTypes.bool.isRequired,
-  setTheme: PropTypes.func.isRequired,
 };
 
 const Theme = () => {
@@ -35,11 +29,21 @@ const Theme = () => {
 
   return (
     <div className="pb-6 mt-6">
-      <h2 className="pb-4 text-xl font-semibold">Theme</h2>
+      <h2 className="pb-4 pl-2 text-xl text-gray-800">
+        <FontAwesomeIcon icon="theater-masks" />
+        <span className="pl-2">Theme</span>
+      </h2>
       <div className="grid grid-cols-3 gap-2">
         {themeNames.map((color) => (
           <div className="flex flex-col items-center" key={color}>
-            <ThemeButton color={color} selected={color === theme} setTheme={setTheme} />
+            <ThemedButton.Modal
+              type="button"
+              className="w-full h-16 p-1 border border-transparent rounded"
+              selected={color === theme}
+              onClick={() => setTheme(color)}
+            >
+              <Palette color={color} />
+            </ThemedButton.Modal>
             <span className="pt-1 text-sm uppercase">{color}</span>
           </div>
         ))}

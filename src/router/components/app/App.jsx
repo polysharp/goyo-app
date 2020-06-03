@@ -10,7 +10,14 @@ import { useStore } from 'store';
 import { Dashboard, Renters, Properties, Activites, Statistics } from 'pages/app';
 
 import Redirector from '../shared';
-import { Layout, Topbar, Sidebar, UserSettingsModal } from './components';
+import {
+  Layout,
+  Topbar,
+  Sidebar,
+  UserNotificationsDropdown,
+  UserSettingsModal,
+  UserProfileDropdown,
+} from './components';
 
 const App = () => {
   const { user } = useStore();
@@ -19,11 +26,18 @@ const App = () => {
     onCompleted: (data) => user.populate(data),
   });
 
-  const [userProfileModalOpen, setUserProfileModalOpen] = useState(false);
+  const [notificationsDropdownOpen, setNotificationsDropdownOpen] = useState(false);
+  const [settingsModalOpen, setSettingsModalOpen] = useState(false);
+  const [profileDropdownOpen, setProfileDropdownOpen] = useState(false);
 
   return (
     <Layout>
-      <Topbar openUserProfileModal={setUserProfileModalOpen} />
+      <Topbar
+        openNotificationsDropdown={setNotificationsDropdownOpen}
+        openSettingsModal={setSettingsModalOpen}
+        openProfileDropdown={setProfileDropdownOpen}
+        profileDropdownOpen={profileDropdownOpen}
+      />
       <Sidebar />
       <Switch>
         <Route exact path="/" component={Dashboard} />
@@ -33,7 +47,12 @@ const App = () => {
         <Route exact path="/statistics" component={Statistics} />
         <Redirector isAuthenticated />
       </Switch>
-      <UserSettingsModal isOpen={userProfileModalOpen} setOpen={setUserProfileModalOpen} />
+      <UserNotificationsDropdown
+        isOpen={notificationsDropdownOpen}
+        setOpen={setNotificationsDropdownOpen}
+      />
+      <UserSettingsModal isOpen={settingsModalOpen} setOpen={setSettingsModalOpen} />
+      <UserProfileDropdown isOpen={profileDropdownOpen} setOpen={setProfileDropdownOpen} />
     </Layout>
   );
 };

@@ -1,10 +1,4 @@
 import { library } from '@fortawesome/fontawesome-svg-core';
-import {
-  faCogs,
-  faTimes,
-  faGlobe,
-  faYenSign,
-  faTheaterMasks,
-} from '@fortawesome/free-solid-svg-icons';
+import { faGlobe, faYenSign, faTheaterMasks } from '@fortawesome/free-solid-svg-icons';
 
-library.add([faCogs, faTimes, faGlobe, faYenSign, faTheaterMasks]);
+library.add([faGlobe, faYenSign, faTheaterMasks]);

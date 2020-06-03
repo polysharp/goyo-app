@@ -1,6 +1,6 @@
 const nav = {
   normal: {
-    color: '#e2e8f0',
+    color: '#718096',
   },
   hover: {
     color: '#2d3748',

@@ -29,8 +29,8 @@ const UserSettingsModal = ({ isOpen, setOpen }) => {
         </div>
       </ModalHeader>
       <ModalBody>
-        <Currencies />
         <Languages />
+        <Currencies />
         <Theme />
       </ModalBody>
     </Modal>

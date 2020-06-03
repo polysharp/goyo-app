@@ -1,9 +1,13 @@
 import global from '../shared';
 import nav from './nav';
+import modal from './modal';
+import dropdown from './dropdown';
 
 const theme = {
   global: { ...global },
   nav: { ...nav },
+  modal: { ...modal },
+  dropdown: { ...dropdown },
   '100': '#faf5ff',
   '200': '#e9d8fd',
   '300': '#d6bcfa',

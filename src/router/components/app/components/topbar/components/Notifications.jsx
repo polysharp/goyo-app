@@ -3,8 +3,16 @@ import PropTypes from 'prop-types';
 
 import { EaseIn, ThemedButton } from 'components';
 
+const hasNotification = true;
+
 const Notifications = ({ openNotificationsDropdown }) => (
   <div className="relative flex flex-col items-center justify-center w-15">
+    {hasNotification && (
+      <span
+        className="absolute w-3 h-3 bg-red-400 border-2 border-white rounded-full"
+        style={{ top: '18px', right: '18px' }}
+      />
+    )}
     <ThemedButton.Nav
       as="button"
       type="button"

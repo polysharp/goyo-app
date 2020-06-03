@@ -8,7 +8,7 @@ const Profile = ({ openProfileDropdown }) => (
     <ThemedButton.Nav
       as="button"
       type="button"
-      className="w-full h-full p-2 text-gray-300 hover:text-black"
+      className="w-full h-full p-2"
       onClick={() => openProfileDropdown(true)}
     >
       <div className="flex flex-row items-center justify-between">

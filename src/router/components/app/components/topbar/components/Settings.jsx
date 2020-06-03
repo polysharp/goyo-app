@@ -8,7 +8,7 @@ const Settings = ({ openSettingsModal }) => (
     <ThemedButton.Nav
       as="button"
       type="button"
-      className="w-full h-full p-4 text-gray-300 hover:text-black"
+      className="w-full h-full p-4"
       onClick={() => openSettingsModal(true)}
     >
       <EaseIn>

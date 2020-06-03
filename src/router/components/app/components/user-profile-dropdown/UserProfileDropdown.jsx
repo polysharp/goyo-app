@@ -1,11 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { useStore } from 'store';
+
 import { Dropdown, DropdownHeader, DropdownBody, ThemedButton, EaseIn } from 'components';
 
 import profileDropdownCustomStyle from './profile-dropdown-custom-style';
 
 const UserProfileDropdown = ({ isOpen, setOpen }) => {
+  const { user } = useStore();
+
   const onClose = () => {
     setOpen(!isOpen);
   };
@@ -45,7 +49,11 @@ const UserProfileDropdown = ({ isOpen, setOpen }) => {
             <span>Aide</span>
           </EaseIn>
         </ThemedButton.Dropdown>
-        <ThemedButton.Dropdown type="button" className="w-full h-full p-2 border-t">
+        <ThemedButton.Dropdown
+          type="button"
+          className="w-full h-full p-2 border-t"
+          onClick={() => user.unsign()}
+        >
           <EaseIn>
             <span>Déconnexion</span>
           </EaseIn>

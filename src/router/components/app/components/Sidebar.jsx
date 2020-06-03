@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 
+import { useStore } from 'store';
 import { EaseIn, ThemedButton, Carret } from 'components';
-
-// TODO: Use theme color for the translate span & link hover focus
 
 const links = [
   {
@@ -95,6 +94,7 @@ const getActiveLink = (pathname) => {
 };
 
 const Sidebar = () => {
+  const { user } = useStore();
   const location = useLocation();
   const [active, setActive] = useState(getActiveLink(location));
 
@@ -133,7 +133,12 @@ const Sidebar = () => {
           </nav>
         </div>
         <div className="flex flex-col items-center justify-center w-15 h-15">
-          <ThemedButton.Nav as="button" type="button" className="w-full h-full p-4">
+          <ThemedButton.Nav
+            as="button"
+            type="button"
+            className="w-full h-full p-4"
+            onClick={() => user.unsign()}
+          >
             <EaseIn>
               <svg viewBox="0 0 24 24" fill="currentColor" className="transform rotate-90">
                 <path

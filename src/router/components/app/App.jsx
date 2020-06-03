@@ -28,7 +28,7 @@ const App = () => {
 
   const [notificationsDropdownOpen, setNotificationsDropdownOpen] = useState(false);
   const [settingsModalOpen, setSettingsModalOpen] = useState(false);
-  const [profileDropdownOpen, setProfileDropdownOpen] = useState(false);
+  const [profileDropdownOpen, setProfileDropdownOpen] = useState(true);
 
   return (
     <Layout>

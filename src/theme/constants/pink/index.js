@@ -18,6 +18,7 @@ const theme = {
   '800': '#97266d',
   '900': '#702459',
   outline: '#ed64a6',
+  typo: '#ed64a6',
 };
 
 export default theme;

@@ -3,45 +3,31 @@ import { observer } from 'mobx-react';
 
 import { useStore } from 'store';
 
-import { Heading, toasts } from 'components';
-import { Board, BoardHeader } from '../shared';
+import { Board } from '../shared';
+import { Incomes, Rents } from './components';
 
 const DashboardPage = () => {
   const { user } = useStore();
 
   return (
     <Board>
-      <BoardHeader>
-        <div>
-          <Heading>Tableau de bords</Heading>
+      <div className="grid w-full grid-cols-4 gap-4 grid-rows-9 xl:grid-rows-6 xl:h-full xl:grid-cols-6">
+        <div className="col-span-4 row-span-1 mt-4 ml-4 mr-4 xl:mr-0">
+          <div className="h-full max-h-full bg-white border rounded ">
+            <Incomes />
+          </div>
         </div>
-        <div>
-          <h2>Button</h2>
+        <div className="col-span-2 row-span-3 ml-4 xl:ml-0 xl:mt-4 xl:mr-4">
+          <div className="h-full max-h-full bg-white border rounded">Objectif progress</div>
         </div>
-      </BoardHeader>
-      {user.email && <h1>{user.email}</h1>}
-      <div className="flex flex-col items-center pt-20">
-        <button
-          type="button"
-          className="bg-gray-200"
-          onClick={() => toasts.success('Changemenet sauvegardé !')}
-        >
-          Success notification
-        </button>
-        <button
-          type="button"
-          className="bg-gray-200"
-          onClick={() => toasts.info('Jean-Michelle à payé son loyer.')}
-        >
-          Info notification
-        </button>
-        <button
-          type="button"
-          className="bg-gray-200"
-          onClick={() => toasts.warning('Micheline quitte bientôt son appartement')}
-        >
-          Warning notification
-        </button>
+        <div className="col-span-2 row-span-3 mr-4 xl:mb-4 xl:col-start-5">
+          <div className="h-full max-h-full bg-white border rounded">Graphiques</div>
+        </div>
+        <div className="col-span-4 row-span-5 mb-4 ml-4 mr-4 xl:mb-4 xl:mr-0 xl:mb-0 xl:col-span-4 xl:row-span-5 xl:row-start-2">
+          <div className="h-full max-h-full bg-white border rounded">
+            <Rents />
+          </div>
+        </div>
       </div>
     </Board>
   );

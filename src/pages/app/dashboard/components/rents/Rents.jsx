@@ -141,21 +141,21 @@ const Rents = () => (
                 <div className="hidden" />
               </td>
               <td className="px-6 py-3 border-b">
-                <span className="inline-flex px-2 text-xs font-semibold leading-5 text-green-800 bg-green-100 rounded-full">
+                {/* <span className="inline-flex px-2 text-xs font-semibold leading-5 text-green-800 bg-green-100 rounded-full">
                   {`${fakeRents.filter((data) => data.rent.status === 'PAID').length} Payé(s)`}
-                </span>
+                </span> */}
               </td>
               <td className="px-6 py-3 border-b">
-                <span className="inline-flex px-2 text-xs font-semibold leading-5 text-orange-800 bg-orange-100 rounded-full">
+                {/* <span className="inline-flex px-2 text-xs font-semibold leading-5 text-orange-800 bg-orange-100 rounded-full">
                   {`${
                     fakeRents.filter((data) => data.rent.status === 'RETARDED').length
                   } Retardé(s)`}
-                </span>
+                </span> */}
               </td>
               <td className="px-6 py-3 border-b">
-                <span className="inline-flex px-2 text-xs font-semibold leading-5 text-red-800 bg-red-100 rounded-full">
+                {/* <span className="inline-flex px-2 text-xs font-semibold leading-5 text-red-800 bg-red-100 rounded-full">
                   {`${fakeRents.filter((data) => data.rent.status === 'UNPAID').length} Impayé(s)`}
-                </span>
+                </span> */}
               </td>
             </tr>
           </tbody>

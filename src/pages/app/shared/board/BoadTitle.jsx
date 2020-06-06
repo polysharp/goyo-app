@@ -4,7 +4,7 @@ import tw from 'tailwind.macro';
 const BoardTitle = styled.h1`
   ${tw`text-lg font-bold leading-tight tracking-tight uppercase`}
 
-  color: ${({ theme }) => theme.typo};
+  color: ${({ theme }) => theme.primary};
 `;
 
 export default BoardTitle;

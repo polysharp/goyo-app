@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import tw from 'tailwind.macro';
 
 const CardTitle = styled.h2`
-  ${tw`font-bold leading-tight tracking-tight`}
+  ${tw`text-lg font-black leading-tight tracking-tight`}
 
   color: ${({ theme }) => theme.primary};
 `;

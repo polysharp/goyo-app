@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import tw from 'tailwind.macro';
 
 const CardHeader = styled.div`
-  ${tw`relative flex flex-row items-center px-6 py-4`}
+  ${tw`relative flex flex-row items-center px-6 py-4 border-b border-gray-200`}
 
   ${({ align }) => {
     switch (align) {

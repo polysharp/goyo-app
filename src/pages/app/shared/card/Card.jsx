@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 import tw from 'tailwind.macro';
 
 const Card = styled.div`
-  ${tw`flex flex-col rounded shadow`}
+  ${tw`flex flex-col rounded-lg shadow`}
 
   ${({ useTheme }) => {
     if (useTheme) {

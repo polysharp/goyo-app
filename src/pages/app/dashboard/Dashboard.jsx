@@ -1,13 +1,13 @@
 import React from 'react';
 import { observer } from 'mobx-react';
 
-import { useStore } from 'store';
+// import { useStore } from 'store';
 
 import { Board } from '../shared';
 import { Metrics, Expenses, Incomes, Rents } from './components';
 
 const DashboardPage = () => {
-  const { user } = useStore();
+  // const { user } = useStore();
 
   return (
     <Board>

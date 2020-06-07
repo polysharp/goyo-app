@@ -32,7 +32,7 @@ const Expenses = () => {
     },
   });
 
-  const [series, setSeries] = useState([
+  const [series] = useState([
     {
       name: 'Travaux',
       data: [300, 200, 100, 500],
@@ -55,28 +55,6 @@ const Expenses = () => {
       <CardBody className="h-full p-2">
         <Chart type="bar" options={options} series={series} width="100%" height="100%" />
       </CardBody>
-      <div className="flex flex-row items-center justify-between">
-        <button
-          onClick={() =>
-            setSeries([
-              {
-                name: 'Travaux',
-                data: [200, 500, 220, 50],
-              },
-              {
-                name: 'Entretien',
-                data: [200, 730, 190, 102],
-              },
-              {
-                name: 'Rénovation',
-                data: [400, 150, 289, 330],
-              },
-            ])
-          }
-        >
-          New data
-        </button>
-      </div>
     </Card>
   );
 };

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const Rent = ({ data }) => (
   <tr>
-    <td className="px-6 py-4 whitespace-no-wrap border-b">
+    <td className="px-6 py-3 whitespace-no-wrap border-b">
       <div className="flex items-center">
         <div className="flex-shrink-0 w-10 h-10">
           <img className="w-10 h-10 rounded-full" src={data.profile.avatar || ''} alt="" />
@@ -16,11 +16,11 @@ const Rent = ({ data }) => (
         </div>
       </div>
     </td>
-    <td className="px-6 py-4 whitespace-no-wrap border-b">
+    <td className="px-6 py-3 whitespace-no-wrap border-b">
       <div className="text-sm leading-5 text-gray-900">{data.location.address}</div>
       <div className="text-sm leading-5 text-gray-500">{data.location.city}</div>
     </td>
-    <td className="px-6 py-4 whitespace-no-wrap border-b">
+    <td className="px-6 py-3 whitespace-no-wrap border-b">
       {data.rent.status === 'PAID' && (
         <span className="inline-flex px-2 text-xs font-semibold leading-5 text-green-800 bg-green-100 rounded-full">
           Payé
@@ -37,13 +37,13 @@ const Rent = ({ data }) => (
         </span>
       )}
     </td>
-    <td className="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b">
+    <td className="px-6 py-3 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b">
       {`${data.rent.amount} €`}
     </td>
-    <td className="px-6 py-4 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b">
+    <td className="px-6 py-3 text-sm leading-5 text-gray-500 whitespace-no-wrap border-b">
       {data.rent.date}
     </td>
-    <td className="px-6 py-4 text-sm font-medium leading-5 whitespace-no-wrap border-b">
+    <td className="px-6 py-3 text-sm font-medium leading-5 whitespace-no-wrap border-b">
       <a href="/" className="text-indigo-600 hover:text-indigo-900">
         Edit
       </a>

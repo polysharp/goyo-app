@@ -1,6 +1,9 @@
 import styled, { css } from 'styled-components';
+import tw from 'tailwind.macro';
 
 const Dropdown = styled.button`
+  ${tw`rounded`}
+
   ${({ theme }) => {
     return css`
       color: ${theme.dropdown.normal.color};

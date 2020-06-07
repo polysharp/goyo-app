@@ -1,6 +1,9 @@
 import styled, { css } from 'styled-components';
+import tw from 'tailwind.macro';
 
 const Modal = styled.button`
+  ${tw`rounded`}
+
   ${({ theme, selected }) => {
     if (selected) {
       return css`

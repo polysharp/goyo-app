@@ -5,9 +5,6 @@ import { Card, CardHeader, CardTitle, CardBody } from '../../../shared';
 
 const Incomes = () => {
   const [options] = useState({
-    chart: {
-      id: 'income-chart',
-    },
     xaxis: {
       categories: [
         'Jan',
@@ -24,6 +21,18 @@ const Incomes = () => {
         'Décembre',
       ],
     },
+    yaxis: {
+      title: {
+        text: '€ (euros)',
+      },
+    },
+    tooltip: {
+      y: {
+        formatter(val) {
+          return `${val} €`;
+        },
+      },
+    },
   });
 
   const [series] = useState([
@@ -39,7 +48,7 @@ const Incomes = () => {
         <CardTitle>Revenu mensuel</CardTitle>
       </CardHeader>
       <CardBody className="h-full p-2">
-        <Chart type="line" options={options} series={series} width="100%" height="100%" />
+        <Chart type="area" options={options} series={series} width="100%" height="100%" />
       </CardBody>
     </Card>
   );

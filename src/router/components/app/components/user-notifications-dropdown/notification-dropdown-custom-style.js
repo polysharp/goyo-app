@@ -6,6 +6,7 @@ const modalCustomStyle = {
     bottom: 0,
     left: 0,
     backgroundColor: 'transparent',
+    zIndex: '999',
   },
   content: {
     position: 'fixed',

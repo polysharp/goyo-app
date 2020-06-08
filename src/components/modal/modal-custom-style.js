@@ -6,6 +6,7 @@ const modalCustomStyle = {
     bottom: 0,
     left: 0,
     backgroundColor: 'rgba(34, 34, 34, .6)',
+    zIndex: '999',
   },
   content: {
     top: '50%',
